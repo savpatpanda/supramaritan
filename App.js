@@ -66,7 +66,7 @@ export default class App extends React.Component {
           transparent={false}
           visible={this.state.formModalVisible}
           onRequestClose={() => {
-            alert('Modal has been closed.');
+            this.setFormModalVisible(!this.state.formModalVisible);
           }}>
           <View style={{marginTop: 22}}>
             <View>
@@ -87,7 +87,7 @@ export default class App extends React.Component {
           transparent={false}
           visible={this.state.authModalVisible}
           onRequestClose={() => {
-            alert('Modal has been closed.');
+            this.setAuthModalVisible(!this.state.authModalVisible);
           }}>
           <View style={{marginTop: 22}}>
             <View>
