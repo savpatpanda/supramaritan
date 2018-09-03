@@ -8,9 +8,21 @@ export default class App extends React.Component {
 
   state = {
     formModalVisible: false,
-    authModalVisible: false
+    authModalVisible: false,
+    currentCoordinates : {}
   }
-
+  componentDidMount(){
+    this.watchId = navigator.geolocation.watchPosition(
+      (position) => {
+        this.setState({
+          currentCoordinates: {lat : position.coords.latitude, long : position.coords.longitude }
+        });
+      },
+      (error) => this.setState({ error: error.message }),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 },
+    );
+  }
+  
   setFormModalVisible(visible) {
     this.setState({formModalVisible: visible});
   }
@@ -34,8 +46,8 @@ export default class App extends React.Component {
 
           <MapView.Marker
             coordinate={{
-              latitude: 40.442431,
-              longitude: -74.662218
+              latitude: this.state.currentCoordinates.lat || 40.442431,
+              longitude: this.state.currentCoordinates.long || -74.662218
             }}
             image={red_map_marker}
             title={'Current location'}
@@ -67,7 +79,7 @@ export default class App extends React.Component {
           transparent={false}
           visible={this.state.formModalVisible}
           onRequestClose={() => {
-            alert('Modal has been closed.');
+            this.setFormModalVisible(!this.state.formModalVisible);
           }}>
           <View style={{marginTop: 22}}>
             <View>
@@ -88,7 +100,7 @@ export default class App extends React.Component {
           transparent={false}
           visible={this.state.authModalVisible}
           onRequestClose={() => {
-            alert('Modal has been closed.');
+            this.setAuthModalVisible(!this.state.authModalVisible);
           }}>
           <View style={{marginTop: 22}}>
             <View>
