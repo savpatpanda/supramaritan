@@ -1,8 +1,24 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Modal, TouchableHighlight } from 'react-native';
 import MapView from 'react-native-maps';
+import ActionButton from 'react-native-circular-action-menu';
+import { Ionicons, Entypo } from '@expo/vector-icons';
 
 export default class App extends React.Component {
+
+  state = {
+    formModalVisible: false,
+    authModalVisible: false
+  }
+
+  setFormModalVisible(visible) {
+    this.setState({formModalVisible: visible});
+  }
+
+  setAuthModalVisible(visible) {
+    this.setState({authModalVisible: visible});
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -35,6 +51,57 @@ export default class App extends React.Component {
           />
 
         </MapView>
+
+        <ActionButton buttonColor="rgba(231,76,60,1)">
+          <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={() => {this.setFormModalVisible(true)}}>
+            <Ionicons name="md-document" style={styles.actionButtonIcon} />
+          </ActionButton.Item>
+          <ActionButton.Item buttonColor='#3498db' title="Notifications" onPress={() => {this.setAuthModalVisible(true)}}>
+            <Ionicons name="md-warning" style={styles.actionButtonIcon} />
+          </ActionButton.Item>
+        </ActionButton>
+
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={this.state.formModalVisible}
+          onRequestClose={() => {
+            alert('Modal has been closed.');
+          }}>
+          <View style={{marginTop: 22}}>
+            <View>
+              <Text>Hello World!</Text>
+
+              <TouchableHighlight
+                onPress={() => {
+                  this.setFormModalVisible(!this.state.formModalVisible);
+                }}>
+                <Text>Hide Modal</Text>
+              </TouchableHighlight>
+            </View>
+          </View>
+        </Modal>
+
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={this.state.authModalVisible}
+          onRequestClose={() => {
+            alert('Modal has been closed.');
+          }}>
+          <View style={{marginTop: 22}}>
+            <View>
+              <Text>Hello World!</Text>
+
+              <TouchableHighlight
+                onPress={() => {
+                  this.setAuthModalVisible(!this.state.authModalVisible);
+                }}>
+                <Text>Hide Modal</Text>
+              </TouchableHighlight>
+            </View>
+          </View>
+        </Modal>
       </View>
     );
   }
@@ -57,5 +124,10 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     left: 0
-  }
+  },
+  actionButtonIcon: {
+    fontSize: 20,
+    height: 22,
+    color: 'white',
+  },
 });
