@@ -1,5 +1,7 @@
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import MapView from 'react-native-maps';
+import red_map_marker from './images';
 
 export default class App extends React.Component {
   render() {
@@ -20,6 +22,7 @@ export default class App extends React.Component {
               latitude: 40.442431,
               longitude: -74.662218
             }}
+            image={red_map_marker}
             title={'Current location'}
             description={'My current location'}
           />
