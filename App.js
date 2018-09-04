@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Modal, TouchableHighlight } from 'react-native'
 import MapView from 'react-native-maps';
 import ActionButton from 'react-native-circular-action-menu';
 import { Ionicons, Entypo } from '@expo/vector-icons';
+import Modal1 from './Modal1';
 
 export default class App extends React.Component {
 
@@ -49,7 +50,6 @@ export default class App extends React.Component {
               latitude: this.state.currentCoordinates.lat || 40.442431,
               longitude: this.state.currentCoordinates.long || -74.662218
             }}
-            image={red_map_marker}
             title={'Current location'}
             description={'My current location'}
           />
@@ -74,26 +74,7 @@ export default class App extends React.Component {
           </ActionButton.Item>
         </ActionButton>
 
-        <Modal
-          animationType="slide"
-          transparent={false}
-          visible={this.state.formModalVisible}
-          onRequestClose={() => {
-            this.setFormModalVisible(!this.state.formModalVisible);
-          }}>
-          <View style={{marginTop: 22}}>
-            <View>
-              <Text>Hello World!</Text>
-
-              <TouchableHighlight
-                onPress={() => {
-                  this.setFormModalVisible(!this.state.formModalVisible);
-                }}>
-                <Text>Hide Modal</Text>
-              </TouchableHighlight>
-            </View>
-          </View>
-        </Modal>
+        <Modal1 />
 
         <Modal
           animationType="slide"
