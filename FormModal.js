@@ -3,12 +3,14 @@ import { StyleSheet, Text, View, TouchableHighlight , AppRegistry, Modal} from '
 import ActionButton from 'react-native-circular-action-menu';
 import { Ionicons, Entypo } from '@expo/vector-icons';
 
-export default class Modal1 extends React.Component {
+export default class FormModal extends React.Component {
 
 	state = {
-    	formModalVisible: false,
+    	formModalVisible: null,
   	}
-
+  	componentDidMount(){
+  		this.state.formModalVisible = this.props.visible;
+  	}
 	setFormModalVisible(visible) {
     	this.setState({formModalVisible: visible});
   	}
