@@ -147,4 +147,5 @@ const styles = StyleSheet.create({
 
 
 });
+
 export default connect(mapStateToProps)(Main);
