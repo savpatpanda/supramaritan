@@ -4,6 +4,14 @@ import ActionButton from 'react-native-circular-action-menu';
 import { Ionicons, Entypo } from '@expo/vector-icons';
 
 export default class Modal1 extends React.Component {
+
+	state = {
+    	formModalVisible: false,
+  	}
+
+	setFormModalVisible(visible) {
+    	this.setState({formModalVisible: visible});
+  	}
 	render() {
     	return (
 	    	<Modal
@@ -31,5 +39,5 @@ export default class Modal1 extends React.Component {
 const styles = StyleSheet.create({
 	row : {flex: 1, flexDirection:'row',justifyContent: 'center', alignItems: 'center', backgroundColor: '#40E0D0'},
 	column : {flex: 1, flexDirection:'column',justifyContent: 'center', alignItems: 'center'},
-	title : {color: 'white', fontStyle: 'sans-serif', textAlign: 'center'}
+	title : {color: 'white', textAlign: 'center'}
 });

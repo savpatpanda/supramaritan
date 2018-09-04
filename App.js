@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Modal, TouchableHighlight } from 'react-native';
 import MapView from 'react-native-maps';
 import ActionButton from 'react-native-circular-action-menu';
-import { Ionicons, Entypo } from '@expo/vector-icons';
+import { Ionicons, Entypo, FontAwesome } from '@expo/vector-icons';
 import Modal1 from './Modal1';
 
 export default class App extends React.Component {
@@ -74,28 +74,32 @@ export default class App extends React.Component {
           </ActionButton.Item>
         </ActionButton>
 
-        <Modal1 />
+        <Modal1 visible = {this.state.formModalVisible}/>
 
         <Modal
-          animationType="slide"
-          transparent={false}
-          visible={this.state.authModalVisible}
-          onRequestClose={() => {
-            this.setAuthModalVisible(!this.state.authModalVisible);
-          }}>
-          <View style={{marginTop: 22}}>
-            <View>
-              <Text>Hello World!</Text>
-
-              <TouchableHighlight
-                onPress={() => {
-                  this.setAuthModalVisible(!this.state.authModalVisible);
-                }}>
-                <Text>Hide Modal</Text>
-              </TouchableHighlight>
+            animationType="slide"
+            transparent={false}
+            visible={this.state.formModalVisible}
+            onRequestClose={() => {
+              this.setFormModalVisible(!this.state.formModalVisible);
+            }}>
+            <View style={styles.column}>
+              <View style={styles.row}>
+                <TouchableHighlight
+                  onPress={() => {
+                    this.setFormModalVisible(!this.state.formModalVisible);
+                  }}>
+                  <FontAwesome name = "close" style = {styles.closeButton}/>
+                </TouchableHighlight>
+                <View style = {styles.severityView}>
+                </View>
+                <View style = {styles.checkBoxView}>
+                </View>
+              </View>
             </View>
-          </View>
-        </Modal>
+          </Modal>
+
+        
       </View>
     );
   }
@@ -124,4 +128,18 @@ const styles = StyleSheet.create({
     height: 22,
     color: 'white',
   },
+  closeButton: {
+    fontSize: 20,
+    marginTop: '10%',
+    marginLeft: '5%',
+    
+  },
+  severityView: {
+
+  },
+  checkBoxView: {
+
+  }
+
+
 });
