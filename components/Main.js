@@ -6,6 +6,9 @@ import { Ionicons, Entypo, FontAwesome } from '@expo/vector-icons';
 import FormModal from './FormModal';
 import { createStore, applyMiddleware } from 'redux';
 import { connect } from 'react-redux';
+import io from 'socket.io-client'
+
+//const socket = io('server location');
 
 class Main extends React.Component {
 
@@ -14,6 +17,7 @@ class Main extends React.Component {
     authModalVisible: false,
     currentCoordinates : {}
   }
+
   componentDidMount(){
     this.watchId = navigator.geolocation.watchPosition(
       (position) => {
