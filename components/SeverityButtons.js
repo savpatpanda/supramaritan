@@ -20,28 +20,32 @@ export default class SeverityButtons extends React.Component {
 
 	render() {
 
+		const component1 = () => <Text>1</Text>
+		const component2 = () => <Text>2</Text>
+		const component3 = () => <Text>3</Text>
+
 		const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }]
 		const { selectedIndex } = this.state
     	return (
           <ButtonGroup 
+          	onPress={this.updateIndex}
+      		selectedIndex={selectedIndex}
+      		buttons={buttons}
           	containerStyle={styles.containerStyle}
           	buttonStyle={styles.buttonStyle}
           	selectedTextStyle={styles.selectedTextStyle}
+          	selectedButtonStyle={styles.selectedButtonStyle}
           />
     	);
  	}
 }
 
-const SCREEN_WIDTH = Dimensions.get('window').width
 
-const component1 = () => <Text>1</Text>
-const component2 = () => <Text>2</Text>
-const component3 = () => <Text>3</Text>
+
 
 const styles = StyleSheet.create({
 	containerStyle: {
 		height: 40,
-		width: SCREEN_WIDTH * 0.9
 	},
 	buttonStyle: {
 		backgroundColor: 'white'
@@ -49,5 +53,8 @@ const styles = StyleSheet.create({
 	selectedTextStyle: {
 		color: 'orange',
 		fontWeight: '900'
+	},
+	selectedButtonStyle: {
+		backgroundColor: '#000'
 	}
 });

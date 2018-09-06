@@ -7,6 +7,7 @@ import FormModal from './FormModal';
 import { createStore, applyMiddleware } from 'redux';
 import { connect } from 'react-redux';
 import io from 'socket.io-client'
+import SeverityButtons from './SeverityButtons';
 
 //const socket = io('server location');
 
@@ -44,8 +45,8 @@ class Main extends React.Component {
         <MapView 
           style={styles.gmap}
           region={{
-              latitude: 40.442431,
-              longitude: -74.662218,
+              latitude: this.state.currentCoordinates.lat || 40.442431,
+              longitude: this.state.currentCoordinates.long || -74.662218,
               latitudeDelta: 0.01,
               longitudeDelta: 0.01
           }}
@@ -58,15 +59,6 @@ class Main extends React.Component {
             }}
             title={'Current location'}
             description={'My current location'}
-          />
-
-          <MapView.Marker
-            coordinate={{
-              latitude: 40.438036,
-              longitude: -74.655580
-            }}
-            title={'Ivans location'}
-            description={'Ivans house location'}
           />
 
         </MapView>
@@ -98,6 +90,8 @@ class Main extends React.Component {
                   <FontAwesome name = "close" style = {styles.closeButton}/>
                 </TouchableHighlight>
                 <View style = {styles.severityView}>
+                <Text>Distress Signal</Text>
+                <SeverityButtons />
                 </View>
                 <View style = {styles.checkBoxView}>
                 </View>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableHighlight , AppRegistry, Modal} from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight , AppRegistry, Modal, Dimensions} from 'react-native';
 import ActionButton from 'react-native-circular-action-menu';
 import { Ionicons, Entypo } from '@expo/vector-icons';
 import {ButtonGroup} from 'react-native-elements';
@@ -28,25 +28,20 @@ export default class FormModal extends React.Component {
 	          }}>
 	          <View>
 	          	<View>
-	              <TouchableHighlight
-	                onPress={() => {
-	                  this.setFormModalVisible(!this.state.formModalVisible);
-	                }}>
-	                <Text>Hide Modal</Text>
-	              </TouchableHighlight>
-	              	<Text>Distress Signal</Text>
-	              <SeverityButtons />
+
+	              	
 	         	</View>
+	         	<Text>Distress Signal</Text>
+	            <SeverityButtons />
 	          </View>
 	        </Modal>
     	);
  	}
 }
 
+const SCREEN_WIDTH = Dimensions.get('window').width
+
 const styles = StyleSheet.create({
-	row : {flex: 1, flexDirection:'row',justifyContent: 'center', alignItems: 'center', backgroundColor: '#40E0D0'},
-	column : {flex: 1, flexDirection:'column',justifyContent: 'center', alignItems: 'center'},
-	title : {color: 'white', textAlign: 'center'},
 	containerStyle: {
 		height: 40,
 		width: SCREEN_WIDTH * 0.9
