@@ -8,6 +8,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { connect } from 'react-redux';
 import io from 'socket.io-client'
 import SeverityButtons from './SeverityButtons';
+import SelectButton from './SelectButton';
 
 //const socket = io('server location');
 
@@ -72,8 +73,6 @@ class Main extends React.Component {
           </ActionButton.Item>
         </ActionButton>
 
-        <FormModal visible = {this.state.formModalVisible}/>
-
         <Modal
             animationType="slide"
             transparent={false}
@@ -92,6 +91,7 @@ class Main extends React.Component {
                 <View style = {styles.severityView}>
                 <Text>Distress Signal</Text>
                 <SeverityButtons />
+                <SelectButton />
                 </View>
                 <View style = {styles.checkBoxView}>
                 </View>
@@ -104,6 +104,7 @@ class Main extends React.Component {
     );
   }
 }
+
 function mapStateToProps(state) {
   return state;
 }
