@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+
 export const loginReducer = (state = {user: {}}, action) => {
     console.log('itemsReducer was called with state', state, 'and action', action)
 
@@ -13,7 +14,9 @@ export const loginReducer = (state = {user: {}}, action) => {
 }
 
 export const rootReducer = combineReducers({
-	loginReducer,
+	loginReducer, 
 })
+
+
 
 export default rootReducer;
