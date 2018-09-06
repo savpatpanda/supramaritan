@@ -1,12 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text} from 'react-native';
+import { StyleSheet, Text, Dimensions} from 'react-native';
 import ActionButton from 'react-native-circular-action-menu';
 import { Ionicons, Entypo } from '@expo/vector-icons';
 import {ButtonGroup} from 'react-native-elements';
 
-
 export default class SeverityButtons extends React.Component {
-
 
 	constructor () {
 	  super()
@@ -34,7 +32,7 @@ export default class SeverityButtons extends React.Component {
  	}
 }
 
-
+const SCREEN_WIDTH = Dimensions.get('window').width
 
 const component1 = () => <Text>1</Text>
 const component2 = () => <Text>2</Text>
