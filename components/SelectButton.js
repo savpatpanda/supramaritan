@@ -6,26 +6,33 @@ import {ButtonGroup} from 'react-native-elements';
 export default class SelectButton extends React.Component {
 
 	state = {
-	    selected: false;
+	    selected: false
 	}
+
+	selectedStatus(status) {
+    	this.setState({selected: status});
+  	}
 
 	render() {
     	return (
           <Button 
-          	onPress={() => {this.setState(!this.state.selected)}}
+          	onPress={() => {this.selectedStatus(!this.state.selected)}}
           	containerStyle={styles.containerStyle}
           	buttonStyle={{backgroundColor: 'white', opacity: opac(this.state.selected)}}
+          	title = {"asdf"}
           >
-          	<FontAwesome name = "close"/>
+          	
           </Button>
     	);
  	}
 }
 
 function opac (asdf){
-	if(asdf == false){
+	if(asdf == true){
+		console.log("50");
 		return 50
-	} else if(asdf == true){
+	} else if(asdf == false){
+		console.log("100");
 		return 100
 	}
 }
