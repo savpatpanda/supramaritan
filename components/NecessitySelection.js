@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, Button, TouchableOpacity, View} from 'react-native';
+import { StyleSheet, Text, Button, TouchableWithoutFeedback, View} from 'react-native';
 import { Ionicons, Entypo, FontAwesome } from '@expo/vector-icons';
 
 export default class NecessitySelection extends React.Component {
@@ -27,23 +27,23 @@ export default class NecessitySelection extends React.Component {
 	render(){
 		return(
 			<View>
-			<TouchableOpacity 
+			<TouchableWithoutFeedback 
 			       style={this.state.activeState[0] ? styles.notSelected : styles.selected} 
-			       onPress={() => this.buttonPressed(0)}>
+			       onPressOut={() => this.buttonPressed(0)}>
 			       <Text>Food</Text>
-			</TouchableOpacity>
+			</TouchableWithoutFeedback>
 
-			<TouchableOpacity 
+			<TouchableWithoutFeedback 
 			       style={this.state.activeState[1] ? styles.notSelected : styles.selected} 
-			       onPress={() => this.buttonPressed(1)}>
+			       onPressOut={() => this.buttonPressed(1)}>
 			       <Text>Injury</Text>
-			</TouchableOpacity>
+			</TouchableWithoutFeedback>
 
-			<TouchableOpacity 
+			<TouchableWithoutFeedback 
 			       style={this.state.activeState[2] ? styles.notSelected : styles.selected} 
-			       onPress={() => this.buttonPressed(2)}>
+			       onPressOut={() => this.buttonPressed(2)}>
 			       <Text>Other</Text>
-			</TouchableOpacity>
+			</TouchableWithoutFeedback>
 			</View>
 		);
 	}
