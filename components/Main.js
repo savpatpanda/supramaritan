@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import io from 'socket.io-client'
 import SeverityButtons from './SeverityButtons';
 import NecessitySelection from './NecessitySelection';
+import SelectButton from './SelectButton';
 
 //const socket = io('server location');
 
@@ -91,7 +92,7 @@ class Main extends React.Component {
                 <View style = {styles.severityView}>
                 <Text>Distress Signal</Text>
                 <SeverityButtons />
-                <NecessitySelection />
+                <SelectButton/>
                 </View>
                 <View style = {styles.checkBoxView}>
                 </View>
