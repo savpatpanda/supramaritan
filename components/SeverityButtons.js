@@ -35,6 +35,7 @@ export default class SeverityButtons extends React.Component {
           	buttonStyle={styles.buttonStyle}
           	selectedTextStyle={styles.selectedTextStyle}
           	selectedButtonStyle={styles.selectedButtonStyle}
+          	innerBorderStyle={{borderColor:'white'}}
           />
     	);
  	}
@@ -46,8 +47,12 @@ export default class SeverityButtons extends React.Component {
 const styles = StyleSheet.create({
 	containerStyle: {
 		height: 40,
+		borderColor: 'white'
 	},
 	buttonStyle: {
+		borderRadius:10,
+	    borderWidth: 0,
+	    borderColor: 'white',
 		backgroundColor: 'white'
 	},
 	selectedTextStyle: {
@@ -55,6 +60,6 @@ const styles = StyleSheet.create({
 		fontWeight: '900'
 	},
 	selectedButtonStyle: {
-		backgroundColor: '#000'
+		backgroundColor: 'orange'
 	}
 });
