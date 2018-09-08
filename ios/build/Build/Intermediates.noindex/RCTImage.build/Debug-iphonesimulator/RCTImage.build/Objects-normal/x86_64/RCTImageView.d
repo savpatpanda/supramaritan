@@ -1,0 +1,31 @@
+dependencies: \
+  /Users/bho/Documents/Projects/Native/node_modules/react-native/Libraries/Image/RCTImageView.m \
+  /Users/bho/Documents/Projects/Native/node_modules/react-native/Libraries/Image/RCTImageView.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTResizeMode.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTConvert.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAnimationType.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBorderStyle.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTLog.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTPointerEvents.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTEventDispatcher.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTImageSource.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/UIView+React.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTComponent.h \
+  /Users/bho/Documents/Projects/Native/node_modules/react-native/Libraries/Image/RCTImageBlurUtils.h \
+  /Users/bho/Documents/Projects/Native/node_modules/react-native/Libraries/Image/RCTImageLoader.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTURLRequestHandler.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTURLRequestDelegate.h \
+  /Users/bho/Documents/Projects/Native/node_modules/react-native/Libraries/Image/RCTImageUtils.h

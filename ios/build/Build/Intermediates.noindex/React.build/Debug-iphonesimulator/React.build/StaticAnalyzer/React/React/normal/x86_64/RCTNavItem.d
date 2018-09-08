@@ -1,0 +1,4 @@
+dependencies: \
+  /Users/bho/Documents/Projects/Native/node_modules/react-native/React/Views/RCTNavItem.m \
+  /Users/bho/Documents/Projects/Native/node_modules/react-native/React/Views/RCTNavItem.h \
+  /Users/bho/Documents/Projects/Native/node_modules/react-native/React/Views/RCTComponent.h

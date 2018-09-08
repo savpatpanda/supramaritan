@@ -1,0 +1,24 @@
+dependencies: \
+  /Users/bho/Documents/Projects/Native/node_modules/react-native/Libraries/Text/Text/RCTTextView.m \
+  /Users/bho/Documents/Projects/Native/node_modules/react-native/Libraries/Text/Text/RCTTextView.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/UIView+React.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTComponent.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/bho/Documents/Projects/Native/node_modules/react-native/Libraries/Text/Text/RCTTextShadowView.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTShadowView.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTLayout.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTRootView.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/bho/Documents/Projects/Native/node_modules/react-native/Libraries/Text/BaseText/RCTBaseTextShadowView.h \
+  /Users/bho/Documents/Projects/Native/node_modules/react-native/Libraries/Text/RCTTextAttributes.h \
+  /Users/bho/Documents/Projects/Native/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h
