@@ -2,15 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, View, Modal, TouchableHighlight, Button, ListView} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import getListofSignals from '../Actions.modal';
+import Row from './renderRow';
 
 export default class AuthModal extends React.Component{
 	
-	const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-
 	state = {
 		authModalVisible : false,
-		incidentlist : [],
-		dataSource: ds.cloneWithRows(['row 1', 'row 2'])
+		dataSource: [];
 	}
 
 	componentWillMount(){
@@ -27,11 +25,13 @@ export default class AuthModal extends React.Component{
 				high.push(list[i])
 			}
 		}
-		this.setState({incidentlist :  sortArrayByDistance(list)})
+		var standardDataSource - new ListView.DataSource({rowHasChnaged: (r1,r2) => r1 != r2});
+		this.setState({dataSource :  standardDataSource.cloneWithRows(sortArrayByDistance(list))})
 	}
 
 	sortArrayByDistance(array){
 		 var output = array.sort(compare);
+		 this.setState({dataSource: output})
 	}
 
 	compare(a,b){
@@ -75,14 +75,11 @@ export default class AuthModal extends React.Component{
 		                </View>
 		                <View style = {styles.formView}>
 		                  <Text style={styles.title}>Signals Near You</Text>
-<<<<<<< HEAD
 		                  <ListView
 					        style={styles.container}
 					        dataSource={this.state.dataSource}
 					        renderRow={(data) => <Row {...data} />}
 						  />
-=======
->>>>>>> b66b9f05331f143c1e4c429fc38a99b4d8a85883
 		                </View>
 		            </View>
 		        </Modal>	
