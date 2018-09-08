@@ -89,11 +89,13 @@ class Main extends React.Component {
     console.log(`${index} pressed`);
     console.log(this.state.incidents[index]);
   }
-
+  onLongPress(){
+    this.setState({showHeatmap: !this.state.showHeatmap});
+  }
   render() {
     console.log(this.state.incidents);
     return (
-      <TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onLongPress={this.onLongPress.bind(this)}>
         <View style={styles.container}>
         <MapView 
           style={styles.gmap}
@@ -211,7 +213,7 @@ class Main extends React.Component {
               />
             </MapView.Marker>
           ))}
-
+          {this.state.showHeatmap &&
           <MapView.Heatmap points={this.state.incidents}
            opacity={1}
            radius={200}
@@ -225,6 +227,7 @@ class Main extends React.Component {
            maxIntensity={100}
            gradientSmoothing={10}
            heatmapMode={"POINTS_WEIGHT"}/>  
+          }
 
         </MapView>
 
