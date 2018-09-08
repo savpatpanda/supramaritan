@@ -35,6 +35,7 @@ export default class FormModal extends React.Component{
 
 		const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }]
 		return(
+				<View>
 				<Modal
 		            animationType="slide"
 		            transparent={false}
@@ -50,66 +51,33 @@ export default class FormModal extends React.Component{
 		                    onPress={() => {
 		                      this.setFormModalVisible(!this.state.formModalVisible);
 		                    }}>
-		                    <FontAwesome name = "close" style = {styles.closeButton}/>
+		                    <Icon name = "close" style = {styles.closeButton}/>
 		                  </TouchableHighlight>
 		                </View>
 		                <View style = {styles.formView}>
 		                  <Text style={styles.title}>Distress Signal</Text>
-		                  <SeverityButtons ref='severity'/>
+		                  <ButtonGroup 
+				          	onPress={this.updateIndex.bind(this)}
+				      		selectedIndex={this.state.selectedIndex}
+				      		buttons={buttons}
+				          	containerStyle={styles.containerStyle}
+				          	buttonStyle={styles.buttonStyle}
+				          	selectedTextStyle={styles.selectedTextStyle}
+				          	selectedButtonStyle={styles.selectedButtonStyle}
+				          	innerBorderStyle={{width: 0, color: 'white'}}
+				          />
 		                  <SelectButton ref='selections'/>
 		                  <Button 
 			        		style={styles.button}
 			        		title='Submit'
-			        		onPress={() => {
-			        			this.sendDistress();
-			        		}}
+			        		onPress={this.sendDistress.bind(this)}
 			        	   >
 		        		   </Button>
 		                </View>
 		              </View>
 		            </View>
-		        </Modal>
-			<Modal
-	            animationType="slide"
-	            transparent={false}
-	            visible={this.state.formModalVisible}
-	            onRequestClose={() => {
-	              this.setFormModalVisible(!this.state.formModalVisible);
-	            }}>
-	            <View>
-	              <View>
-	                <View>
-	                  <TouchableHighlight
-	                    style = {styles.out}
-	                    onPress={() => {
-	                      this.setFormModalVisible(!this.state.formModalVisible);
-	                    }}>
-	                    <Icon name = "close" style = {styles.closeButton}/>
-	                  </TouchableHighlight>
-	                </View>
-	                <View style = {styles.formView}>
-	                  <Text style={styles.title}>Distress Signal</Text>
-	                  <ButtonGroup 
-			          	onPress={this.updateIndex.bind(this)}
-			      		selectedIndex={this.state.selectedIndex}
-			      		buttons={buttons}
-			          	containerStyle={styles.containerStyle}
-			          	buttonStyle={styles.buttonStyle}
-			          	selectedTextStyle={styles.selectedTextStyle}
-			          	selectedButtonStyle={styles.selectedButtonStyle}
-			          	innerBorderStyle={{width: 0, color: 'white'}}
-			          />
-	                  <SelectButton ref='selections'/>
-	                  <Button 
-		        		style={styles.button}
-		        		title='Submit'
-		        		onPress={this.sendDistress.bind(this)}
-		        	   >
-	        		   </Button>
-	                </View>
-	              </View>
-	            </View>
-	        </Modal>	
+		        </Modal>	
+		        </View>
 	    );
     }
 }
