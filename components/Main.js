@@ -11,7 +11,7 @@ import {collectPoints} from '../Actions/modal';
 import police from '../Images/police.png';
 import hospitalImage from '../Images/hospital.png';
 import { getIncidents } from '../Actions/main'
-
+import io from 'socket.io-client'
 const socket = io('https://abhyanfood.herokuapp.com/');
 
 socket.on('connect', () => {
@@ -82,6 +82,10 @@ class Main extends React.Component {
 
   setAuthModalVisible(visible) {
     this.setState({authModalVisible: visible});
+  }
+
+  segueToDetailView(index){
+    console.log(`${index} pressed`);
   }
 
   render() {
@@ -167,6 +171,7 @@ class Main extends React.Component {
                 longitude: marker.coordinates.long}}
               title={"incident"}
               key={marker.key}
+              onPress={this.segueToDetailView.bind(this, marker.key)}
             />
           ))}
 

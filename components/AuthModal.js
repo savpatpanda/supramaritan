@@ -38,7 +38,6 @@ export default class AuthModal extends React.Component{
 		                </View>
 		                <View style = {styles.formView}>
 		                  <Text style={styles.title}>Signals Near You</Text>
-		                  <ScrollView
 		                </View>
 		            </View>
 		        </Modal>	
@@ -81,7 +80,7 @@ const styles = StyleSheet.create({
    		marginLeft: 30,
    		marginBottom: 30,
    		borderRadius: 10
-   }
+   },
    containerStyle: {
 		height: 40,
 		borderColor: 'white'
