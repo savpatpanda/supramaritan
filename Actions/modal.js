@@ -46,7 +46,8 @@ export function getListofSignals(currentCoordinates){
 				coordinates:i.incident.coordinates, 
 				description:i.incident.description, 
 				distance:distanceToUser, 
-				time:i.incident.time}
+				time:i.incident.time,
+				severity:i.incident.currentPriority}
 			end.push(incidents)
 		}
 		return end;
