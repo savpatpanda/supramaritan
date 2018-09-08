@@ -7,7 +7,7 @@ export function getIncidents(coordinates){
 	console.log(bod);
 	return (dispatch) => {
 		console.log('in dispatch')
-		fetch("http://abhyanfood.herokuapp.com/range", {
+		fetch("https://abhyanfood.herokuapp.com/range", {
 			method: 'POST',
 			headers: {
 				"Accept": 'application/json',

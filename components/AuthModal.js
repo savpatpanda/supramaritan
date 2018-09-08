@@ -1,10 +1,53 @@
 import React from 'react';
-import { StyleSheet, Text, View, Modal, TouchableHighlight, Button, SrollView} from 'react-native';
+import { StyleSheet, Text, View, Modal, TouchableHighlight, Button, ListView} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Row from './renderRow';
+import {getListofSignals} from '../Actions/modal';
 
 export default class AuthModal extends React.Component{
+	
 	state = {
 		authModalVisible : false,
+		dataSource: []
+	}
+
+	componentWillMount(){
+		var standardDataSource = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 != r2})
+		var list = getListofSignals(this.props.currentCoordinates);
+		var low = [];
+		var medium = [];
+		var high = [];
+		for(var i = 0; i<list.length; i++){
+			if(list[i].currentPriority == 1){
+				low.push(list[i])
+			}else if(list[i].currentPriority == 2){
+				medium.push(list[i])
+			}else{
+				high.push(list[i])
+			}
+		}
+		this.setState({dataSource : standardDataSource.cloneWithRows(this.sortArrayByDistance(list))})
+	}
+
+	sortArrayByDistance(array){
+		 var output = array.sort(function(a,b){ if(a.distanceToUser<b.distanceToUser){
+			return -1;
+		}else if(a.distanceToUser>b.distanceToUser){
+			return 1;
+		}else{
+			return 0;
+		}});
+		 this.setState({dataSource: output})
+	}
+
+	compare(a,b){
+		if(a.distanceToUser<b.distanceToUser){
+			return -1;
+		}else if(a.distanceToUser>b.distanceToUser){
+			return 1;
+		}else{
+			return 0;
+		}
 	}
 
 	componentWillReceiveProps(){
@@ -38,7 +81,11 @@ export default class AuthModal extends React.Component{
 		                </View>
 		                <View style = {styles.formView}>
 		                  <Text style={styles.title}>Signals Near You</Text>
-		                  <ScrollView
+		                  <ListView
+					        style={styles.container}
+					        dataSource={this.state.dataSource}
+					        renderRow={(data) => <Row {...data} />}
+						  />
 		                </View>
 		            </View>
 		        </Modal>	
@@ -47,6 +94,10 @@ export default class AuthModal extends React.Component{
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: 20,
+  },
   closeButton: {
     fontSize: 20,
     marginTop: '10%',
@@ -81,7 +132,7 @@ const styles = StyleSheet.create({
    		marginLeft: 30,
    		marginBottom: 30,
    		borderRadius: 10
-   }
+   },
    containerStyle: {
 		height: 40,
 		borderColor: 'white'

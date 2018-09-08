@@ -37,13 +37,17 @@ export function getListofSignals(currentCoordinates){
 	   		'Content-Type': 'application/json',
 		},
 		body: bod
-	}).then((response) => return response.json(); })
+	}).then((response) => {return response.json()})
 	.then(function(data){
 		var end = [];
 		for(var i=0; i<data.length; i++){
-			var distanceToUser = Math.sqrt(Math.pow((i.incident.coordinates.lat-currentCoordinates.lat),2)-Math.pow((i.incident.coordinates.long-currentCoordinates.long),2))
-			var incident = {i.incident.coordinates, i.incident.description, distanceToUser, i.incident.time}
-			end.push(incident)
+			var distanceToUser = Math.sqrt(Math.pow(i.incident.coordinates.lat-currentCoordinates.lat,2)-Math.pow(i.incident.coordinates.long-currentCoordinates.long,2))
+			var incidents = {
+				coordinates:i.incident.coordinates, 
+				description:i.incident.description, 
+				distance:distanceToUser, 
+				time:i.incident.time}
+			end.push(incidents)
 		}
 		return end;
 	})
@@ -54,7 +58,7 @@ export function getListofSignals(currentCoordinates){
 
 export function collectPoints(longitude, latitude, type){
 
-	return fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=${type}&key=AIzaSyBXneZ3bJ_NNCgtec5UD8V8664aGQ1EWNA`,{
+	return fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=1000&type=${type}&key=AIzaSyBXneZ3bJ_NNCgtec5UD8V8664aGQ1EWNA`,{
 	}).then(function(response) { console.log(response); return response.json(); })
 	.then(function(data){
 		var end = [];
