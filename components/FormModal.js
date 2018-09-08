@@ -77,7 +77,6 @@ export default class FormModal extends React.Component{
 		              </View>
 		            </View>
 		        </Modal>	
-		        </View>
 				<Modal
 	            animationType="slide"
 	            transparent={false}
@@ -122,7 +121,8 @@ export default class FormModal extends React.Component{
 	                </View>
 	              </View>
 	            </View>
-	        </Modal>	
+	        </Modal>
+	        </View>
 	    );
     }
 }

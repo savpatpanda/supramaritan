@@ -75,11 +75,14 @@ export default class AuthModal extends React.Component{
 		                </View>
 		                <View style = {styles.formView}>
 		                  <Text style={styles.title}>Signals Near You</Text>
+<<<<<<< HEAD
 		                  <ListView
 					        style={styles.container}
 					        dataSource={this.state.dataSource}
 					        renderRow={(data) => <Row {...data} />}
 						  />
+=======
+>>>>>>> b66b9f05331f143c1e4c429fc38a99b4d8a85883
 		                </View>
 		            </View>
 		        </Modal>	
@@ -126,7 +129,7 @@ const styles = StyleSheet.create({
    		marginLeft: 30,
    		marginBottom: 30,
    		borderRadius: 10
-   }
+   },
    containerStyle: {
 		height: 40,
 		borderColor: 'white'
