@@ -1,56 +1,98 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableHighlight , AppRegistry, Modal, Dimensions} from 'react-native';
-import ActionButton from 'react-native-circular-action-menu';
-import { Ionicons, Entypo } from '@expo/vector-icons';
-import {ButtonGroup} from 'react-native-elements';
-import {connect} from 'react-redux';
+import { StyleSheet, Text, View, Modal, TouchableHighlight, Button } from 'react-native';
+import { Ionicons, Entypo, FontAwesome } from '@expo/vector-icons';
 import SeverityButtons from './SeverityButtons';
+import SelectButton from './SelectButton';
+import { sendServerDistress } from '../Actions/modal';
 
-export default class FormModal extends React.Component {
 
+export default class FormModal extends React.Component{
 	state = {
-    	formModalVisible: null,
-  	}
-  	componentDidMount(){
-  		this.state.formModalVisible = this.props.visible;
-  	}
-	setFormModalVisible(visible) {
+		formModalVisible : false
+	}
+	componentWillReceiveProps(){
+		if(this.props.formModalVisible != this.state.formModalVisible){
+			this.state.formModalVisible = this.props.formModalVisible;
+		}
+	}
+
+ 	setFormModalVisible(visible) {
     	this.setState({formModalVisible: visible});
   	}
-	render() {
-    	return (
-	    	<Modal
-	          animationType="slide"
-	          transparent={false}
-	          visible={this.state.formModalVisible}
-	          onRequestClose={() => {
-	            this.setFormModalVisible(!this.state.formModalVisible);
-	          }}>
-	          <View>
-	          	<View>
 
-	              	
-	         	</View>
-	         	<Text>Distress Signal</Text>
-	            <SeverityButtons />
-	          </View>
-	        </Modal>
-    	);
- 	}
+  	sendDistress(){
+  		console.log("Bho is a genius")
+		console.log(this.refs.severity)
+		sendServerDistress(this.refs.severity,this.refs.selections,this.props.coordinates);
+	}
+
+	render(){
+		return(
+			<Modal
+	            animationType="slide"
+	            transparent={false}
+	            visible={this.state.formModalVisible}
+	            onRequestClose={() => {
+	              this.setFormModalVisible(!this.state.formModalVisible);
+	            }}>
+	            <View>
+	              <View>
+	                <View>
+	                  <TouchableHighlight
+	                    style = {styles.out}
+	                    onPress={() => {
+	                      this.setFormModalVisible(!this.state.formModalVisible);
+	                    }}>
+	                    <FontAwesome name = "close" style = {styles.closeButton}/>
+	                  </TouchableHighlight>
+	                </View>
+	                <View style = {styles.formView}>
+	                  <Text style={styles.title}>Distress Signal</Text>
+	                  <SeverityButtons ref='severity'/>
+	                  <SelectButton ref='selections'/>
+	                  <Button 
+		        		style={styles.button}
+		        		title='Submit'
+		        		onPress={() => {
+		        			this.sendDistress();
+		        		}}
+		        	   >
+	        		   </Button>
+	                </View>
+	              </View>
+	            </View>
+	        </Modal>	
+	    );
+    }
 }
 
-const SCREEN_WIDTH = Dimensions.get('window').width
-
 const styles = StyleSheet.create({
-	containerStyle: {
-		height: 40,
-		width: SCREEN_WIDTH * 0.9
-	},
-	buttonStyle: {
-		backgroundColor: 'white'
-	},
-	selectedTextStyle: {
-		color: 'orange',
-		fontWeight: '900'
-	}
+  closeButton: {
+    fontSize: 20,
+    marginTop: '10%',
+    marginRight: '5%',
+    alignSelf: 'center'
+  },
+  out: {
+    flex: 0,
+    width: '15%',
+    marginTop: '5%',
+    alignSelf: 'flex-end',
+    backgroundColor: '#fff'
+  },
+  formView: {
+    alignItems: 'center',
+    marginTop: '5%'
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 18
+  },
+  button: {
+		width: '40%',
+		height: '5%',
+		backgroundColor: 'white',
+		fontSize: 20,
+		color: 'white'
+   }
 });

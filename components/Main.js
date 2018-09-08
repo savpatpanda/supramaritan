@@ -7,10 +7,6 @@ import FormModal from './FormModal';
 import { createStore, applyMiddleware } from 'redux';
 import { connect } from 'react-redux';
 import io from 'socket.io-client'
-import SeverityButtons from './SeverityButtons';
-import NecessitySelection from './NecessitySelection';
-import SelectButton from './SelectButton';
-import Submit from './Submit';
 
 //const socket = io('server location');
 
@@ -75,33 +71,11 @@ class Main extends React.Component {
           </ActionButton.Item>
         </ActionButton>
 
-        <Modal
-            animationType="slide"
-            transparent={false}
-            visible={this.state.formModalVisible}
-            onRequestClose={() => {
-              this.setFormModalVisible(!this.state.formModalVisible);
-            }}>
-            <View>
-              <View>
-                <View>
-                  <TouchableHighlight
-                    style = {styles.out}
-                    onPress={() => {
-                      this.setFormModalVisible(!this.state.formModalVisible);
-                    }}>
-                    <FontAwesome name = "close" style = {styles.closeButton}/>
-                  </TouchableHighlight>
-                </View>
-                <View style = {styles.formView}>
-                  <Text style={styles.title}>Distress Signal</Text>
-                  <SeverityButtons/>
-                  <SelectButton/>
-                  <Submit />
-                </View>
-              </View>
-            </View>
-          </Modal>
+        <FormModal 
+          coordinates={this.state.currentCoordinates}
+          formModalVisible={this.state.formModalVisible}
+        />
+
       </View>
     );
   }
