@@ -91,8 +91,8 @@ class Main extends React.Component {
           style={styles.gmap}
           provider={PROVIDER_GOOGLE}
           region={{
-              latitude: 50.0614300,
-              longitude: 19.9365800,
+              latitude: 39.951895,
+              longitude: -75.191028,
               latitudeDelta: 0.09,
               longitudeDelta: 0.0121
           }}
