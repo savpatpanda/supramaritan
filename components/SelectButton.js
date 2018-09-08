@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, Button, TouchableHighlight, TouchableWithoutFeedback, View} from 'react-native';
-import { Ionicons, Entypo, FontAwesome } from '@expo/vector-icons';
 import {ButtonGroup} from 'react-native-elements';
 
 export default class SelectButton extends React.Component {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Modal, TouchableHighlight, Button } from 'react-native';
-import { Ionicons, Entypo, FontAwesome } from '@expo/vector-icons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import SelectButton from './SelectButton';
 import { sendServerDistress } from '../Actions/modal';
 import { ButtonGroup } from 'react-native-elements';
@@ -50,7 +50,7 @@ export default class FormModal extends React.Component{
 	                    onPress={() => {
 	                      this.setFormModalVisible(!this.state.formModalVisible);
 	                    }}>
-	                    <FontAwesome name = "close" style = {styles.closeButton}/>
+	                    <Icon name = "close" style = {styles.closeButton}/>
 	                  </TouchableHighlight>
 	                </View>
 	                <View style = {styles.formView}>
