@@ -33,7 +33,7 @@ export default class Camera extends React.Component{
       		const options = { quality: 0.5, base64: true };
       		const data = await this.camera.takePictureAsync(options).then((data) => {
 
-      		}).catch(err => console.log(err))
+      		}).catch(err => console.log(err));
       		console.log(data.uri);
     	}
  	};

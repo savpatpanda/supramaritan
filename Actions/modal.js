@@ -37,12 +37,12 @@ export function getListofSignals(currentCoordinates){
 	   		'Content-Type': 'application/json',
 		},
 		body: bod
-	}).then((response) => return response.json(); })
+	}).then((response) => return response.json())
 	.then(function(data){
 		var end = [];
 		for(var i=0; i<data.length; i++){
 			var distanceToUser = Math.sqrt(Math.pow((i.incident.coordinates.lat-currentCoordinates.lat),2)-Math.pow((i.incident.coordinates.long-currentCoordinates.long),2))
-			var incident = {i.incident.coordinates, i.incident.description, distanceToUser, i.incident.time}
+			var incident = {i.incident.coordinates, i.incident.description, distanceToUser, i.incident.time, i.currentPriority}
 			end.push(incident)
 		}
 		return end;

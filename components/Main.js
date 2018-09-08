@@ -264,7 +264,10 @@ class Main extends React.Component {
           formModalVisible={this.state.formModalVisible}
         />
 
-
+        <AuthModal
+          coordinates={this.state.currentCoordinates}
+          authModalVisible={this.state.authModalVisible}
+        />
 
       </View>
     );
