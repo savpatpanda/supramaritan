@@ -248,7 +248,6 @@ class Main extends React.Component {
 
       </View>
 
-        </View>
       </TouchableWithoutFeedback>
 
     );
