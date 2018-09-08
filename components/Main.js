@@ -4,9 +4,9 @@ import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import ActionButton from 'react-native-circular-action-menu';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FormModal from './FormModal';
+import AuthModal from './AuthModal';
 import { createStore, applyMiddleware } from 'redux';
 import { connect } from 'react-redux';
-import io from 'socket.io-client';
 import {collectPoints} from '../Actions/modal';
 import police from '../Images/police.png';
 import hospitalImage from '../Images/hospital.png';
@@ -231,6 +231,8 @@ class Main extends React.Component {
           coordinates={this.state.currentCoordinates}
           formModalVisible={this.state.formModalVisible}
         />
+
+
 
       </View>
     );
