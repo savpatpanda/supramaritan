@@ -21,17 +21,19 @@ class Main extends React.Component {
   }
 
   componentDidMount(){
+    const { dispatch } = this.props;
     this.watchId = navigator.geolocation.watchPosition(
       (position) => {
         this.setState({
           currentCoordinates: {lat : position.coords.latitude, long : position.coords.longitude }
         }, () => {
-            getIncidents(position.coords);
+            dispatch(getIncidents(position.coords));
         });
       },
       (error) => this.setState({ error: error.message }),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 },
     );
+
   }
   
   setFormModalVisible(visible) {

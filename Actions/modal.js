@@ -10,10 +10,10 @@ export function sendServerDistress(severity, selections,currentCoordinates){
 				"other": selections.state.selected3
 			},
 			"coordinates": currentCoordinates,
-			"currentPriority": severity.state.selectedIndex
+			"currentPriority": severity
 		});
 	console.log(bod)
-	fetch('http://abhyanfood.herokuapp.com/storedUsers',{
+	fetch('https://abhyanfood.herokuapp.com/storedUsers',{
 		method: 'POST',
 		headers: {
 			"Accept": 'application/json',

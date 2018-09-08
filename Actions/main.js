@@ -6,6 +6,7 @@ export function getIncidents(coordinates){
 	});
 	console.log(bod);
 	return (dispatch) => {
+		console.log('in dispatch')
 		fetch("http://abhyanfood.herokuapp.com/range", {
 			method: 'POST',
 			headers: {
@@ -13,15 +14,17 @@ export function getIncidents(coordinates){
 		   		'Content-Type': 'application/json',
 			},
 			body: bod
+		}).then((json) => {
+			return json.json();
 		}).then((response) => {
 			console.log(response);
 			dispatch({
 				type: GET_INCIDENTS,
 				response
-			}
-		)})
+			})
+		})
 		.catch((error) => {
-			console.error(error);
+			console.log(error);
 		});
 	}
 }
