@@ -10,6 +10,7 @@ import io from 'socket.io-client'
 import SeverityButtons from './SeverityButtons';
 import NecessitySelection from './NecessitySelection';
 import SelectButton from './SelectButton';
+import Submit from './Submit';
 
 //const socket = io('server location');
 
@@ -81,26 +82,26 @@ class Main extends React.Component {
             onRequestClose={() => {
               this.setFormModalVisible(!this.state.formModalVisible);
             }}>
-            <View style={styles.column}>
-              <View style={styles.row}>
-                <TouchableHighlight
-                  onPress={() => {
-                    this.setFormModalVisible(!this.state.formModalVisible);
-                  }}>
-                  <FontAwesome name = "close" style = {styles.closeButton}/>
-                </TouchableHighlight>
-                <View style = {styles.severityView}>
-                <Text>Distress Signal</Text>
-                <SeverityButtons />
-                <SelectButton/>
+            <View>
+              <View>
+                <View>
+                  <TouchableHighlight
+                    style = {styles.out}
+                    onPress={() => {
+                      this.setFormModalVisible(!this.state.formModalVisible);
+                    }}>
+                    <FontAwesome name = "close" style = {styles.closeButton}/>
+                  </TouchableHighlight>
                 </View>
-                <View style = {styles.checkBoxView}>
+                <View style = {styles.formView}>
+                  <Text style={styles.title}>Distress Signal</Text>
+                  <SeverityButtons/>
+                  <SelectButton/>
+                  <Submit />
                 </View>
               </View>
             </View>
           </Modal>
-
-        
       </View>
     );
   }
@@ -135,17 +136,26 @@ const styles = StyleSheet.create({
   closeButton: {
     fontSize: 20,
     marginTop: '10%',
-    marginLeft: '5%',
-    
+    marginRight: '5%',
+    alignSelf: 'center'
   },
-  severityView: {
-
+  out: {
+    flex: 0,
+    width: '15%',
+    marginTop: '5%',
+    alignSelf: 'flex-end',
+    backgroundColor: '#fff'
   },
-  checkBoxView: {
-
+  formView: {
+    alignItems: 'center',
+    marginTop: '5%'
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 18
+  },
+  severity: {
   }
-
-
 });
 
 export default connect(mapStateToProps)(Main);

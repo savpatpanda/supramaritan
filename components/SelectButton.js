@@ -14,6 +14,12 @@ export default class SelectButton extends React.Component {
 	selectedStatus(status) {
     	this.setState({selected: status});
   	}
+  	selectedStatusTwo(status) {
+    	this.setState({selected2: status});
+  	}
+  	selectedStatusThree(status) {
+    	this.setState({selected3: status});
+  	}
 
 	render() {
     	return (
@@ -23,7 +29,8 @@ export default class SelectButton extends React.Component {
           	buttonStyle={{backgroundColor: 'white'}}
           	title = {"asdf"}
           >
-          <View>
+          <View
+          	style = {styles.containerStyle}>
           	<Text style={{color: opac(this.state.selected)}}>Ligma</Text>
           </View>
           </TouchableWithoutFeedback>
@@ -41,16 +48,29 @@ function opac (asdf){
 	}
 }
 
+function opacTwo (asdf){
+	if(asdf){
+		console.log("50");
+		return '#123'
+	} else if(asdf == false){
+		console.log("100");
+		return '#456'
+	}
+}
+
+function opacThree (asdf){
+	if(asdf){
+		console.log("50");
+		return '#123'
+	} else if(asdf == false){
+		console.log("100");
+		return '#456'
+	}
+}
+
 const styles = StyleSheet.create({
-	container: {
-		marginTop:10,
-	    paddingTop:15,
-	    paddingBottom:15,
-	    marginLeft:30,
-	    marginRight:30,
-	    backgroundColor:'#00BCD4',
-	    borderRadius:10,
-	    borderWidth: 1,
-	    borderColor: '#fff'
+	containerStyle: {
+		height: 40,
+		backgroundColor: '#000'
 	}
 });
