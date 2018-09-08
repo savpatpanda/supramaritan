@@ -1,7 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, Modal, TouchableHighlight, Button, ListView} from 'react-native';
+import { StyleSheet, Text, View, Modal, Button, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Row from './renderRow';
 import {getListofSignals} from '../Actions/modal';
 
 export default class AuthModal extends React.Component{
@@ -12,7 +11,6 @@ export default class AuthModal extends React.Component{
 	}
 
 	componentWillMount(){
-		var standardDataSource = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 != r2})
 		var list = getListofSignals(this.props.currentCoordinates);
 		var low = [];
 		var medium = [];
@@ -26,28 +24,34 @@ export default class AuthModal extends React.Component{
 				high.push(list[i])
 			}
 		}
-		this.setState({dataSource : standardDataSource.cloneWithRows(this.sortArrayByDistance(list))})
-	}
-
-	sortArrayByDistance(array){
-		 var output = array.sort(function(a,b){ if(a.distanceToUser<b.distanceToUser){
-			return -1;
-		}else if(a.distanceToUser>b.distanceToUser){
-			return 1;
-		}else{
-			return 0;
-		}});
-		 this.setState({dataSource: output})
-	}
-
-	compare(a,b){
-		if(a.distanceToUser<b.distanceToUser){
-			return -1;
-		}else if(a.distanceToUser>b.distanceToUser){
-			return 1;
-		}else{
-			return 0;
-		}
+		low.sort(function(a,b){
+			if(a.distanceToUser > b.distanceToUser){
+				return 1;
+			}else if(a.distanceToUser < b.distanceToUser){
+				return -1;
+			}else{
+				return 0;
+			}
+		})
+		medium.sort(function(a,b){
+			if(a.distanceToUser > b.distanceToUser){
+				return 1;
+			}else if(a.distanceToUser < b.distanceToUser){
+				return -1;
+			}else{
+				return 0;
+			}
+		})
+		high.sort(function(a,b){
+			if(a.distanceToUser > b.distanceToUser){
+				return 1;
+			}else if(a.distanceToUser < b.distanceToUser){
+				return -1;
+			}else{
+				return 0;
+			}
+		})
+		this.setState({dataSource: high.concat(medium, low)})
 	}
 
 	componentWillReceiveProps(){
@@ -58,6 +62,16 @@ export default class AuthModal extends React.Component{
 
  	setAuthFormVisible(visible) {
     	this.setState({authModalVisible: visible});
+  	}
+
+  	determineBackgroundColor(severity){
+  		if(severity ==1){
+  			return '#efd915'
+  		}else if(severity ==2){
+  			return '#ef9014'
+  		}else{
+  			return '#ed3510'
+  		}
   	}
 
 	render(){
@@ -81,11 +95,26 @@ export default class AuthModal extends React.Component{
 		                </View>
 		                <View style = {styles.formView}>
 		                  <Text style={styles.title}>Signals Near You</Text>
-		                  <ListView
-					        style={styles.container}
-					        dataSource={this.state.dataSource}
-					        renderRow={(data) => <Row {...data} />}
-						  />
+		                  {this.state.dataSource.map((item, index) => (
+			                  <TouchableOpacity
+						        key = {item.id}
+						        style={
+						        	padding: 10,
+      								marginTop: 3,
+								    backgroundColor: '#d9f9b1',
+								    alignItems: 'center',
+								    backgroundColor: determineBackgroundColor(item.severity)
+						        }
+							  >
+							  	<Text style = {styles.text}>
+                        			Severity: {item.severity}
+                     			</Text>
+                     			<Text style = {styles.text}>
+                     				{item.description}
+                     			</Text>
+							  </TouchableOpacity>
+						  ))
+		                  }
 		                </View>
 		            </View>
 		        </Modal>	
@@ -94,10 +123,6 @@ export default class AuthModal extends React.Component{
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 20,
-  },
   closeButton: {
     fontSize: 20,
     marginTop: '10%',
@@ -148,5 +173,14 @@ const styles = StyleSheet.create({
 	},
 	selectedButtonStyle: {
 		backgroundColor: 'orange'
-	}
+	},
+	container: {
+      padding: 10,
+      marginTop: 3,
+      backgroundColor: '#d9f9b1',
+      alignItems: 'center',
+   },
+   text: {
+      color: '#4f603c'
+   }
 });
