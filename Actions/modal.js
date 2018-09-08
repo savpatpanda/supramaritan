@@ -26,3 +26,23 @@ export function sendServerDistress(severity, selections,currentCoordinates){
 	});
 }
 
+export function collectPoints(longitude, latitude, type){
+
+	return fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=${type}&key=AIzaSyBXneZ3bJ_NNCgtec5UD8V8664aGQ1EWNA`,{
+	}).then(function(response) { console.log(response); return response.json(); })
+	.then(function(data){
+		var end = [];
+		for(var i = 0; i < data.results.length; i++) {
+			var coordinate = {
+				lat: data.results[i].geometry.location.lat,
+				long: data.results[i].geometry.location.lng,
+				key: i
+			}
+			end.push(coordinate)
+		}
+		return end;
+	})
+	.catch((error) => {
+		console.error(error);
+	});
+}

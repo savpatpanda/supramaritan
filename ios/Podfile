@@ -37,6 +37,8 @@ target 'RetailCalculus' do
   pod 'react-native-google-maps', path: rn_maps_path  # Remove this line if you don't want to support GoogleMaps on iOS
   pod 'GoogleMaps'  # Remove this line if you don't want to support GoogleMaps on iOS
   pod 'Google-Maps-iOS-Utils', :git => 'https://github.com/pjamrozowicz/google-maps-ios-utils.git'
+  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
+
 end
 
 post_install do |installer|
