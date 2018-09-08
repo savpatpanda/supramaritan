@@ -36,7 +36,7 @@ export default class AuthModal extends React.Component{
 			return 1;
 		}else{
 			return 0;
-		}});
+		}}); 
 		 this.setState({dataSource: output})
 	}
 

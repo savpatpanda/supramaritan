@@ -237,10 +237,6 @@ class Main extends React.Component {
           formModalVisible={this.state.formModalVisible}
         />
 
-        <AuthModal
-          coordinates={this.state.currentCoordinates}
-          authModalVisible={this.state.authModalVisible}
-        />
 
       </View>
     );
@@ -307,4 +303,11 @@ const styles = StyleSheet.create({
   } 
 });
 
+/*
+
+<AuthModal
+          coordinates={this.state.currentCoordinates}
+          authModalVisible={this.state.authModalVisible}
+        />
+        */
 export default connect(mapStateToProps)(Main);
