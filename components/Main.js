@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import {collectPoints} from '../Actions/modal';
 import police from '../Images/police.png';
 import hospitalImage from '../Images/hospital.png';
-import io from 'socket.io-client'
 import { getIncidents } from '../Actions/main'
 
 const socket = io('http://abhyanfood.herokuapp.com/');
@@ -26,10 +25,24 @@ class Main extends React.Component {
     incidents: []
   }
 
+  componentWillReceiveProps(nextProps){
+    if(nextProps.incidents != this.state.incidents){
+      var z = [];
+      var num = 0;
+      nextProps.incidents.forEach((incident) => {
+        z.push({...incident, key:num});
+        num += 1;
+      });
+      this.setState({incidents: z});
+    }
+  }
+
   componentDidMount(){
     const { dispatch } = this.props;
+    console.log('ay')
     this.watchId = navigator.geolocation.watchPosition(
       (position) => {
+        console.log('shit')
         this.setState({
           currentCoordinates: {lat : position.coords.latitude, long : position.coords.longitude }
         }, () => {
@@ -47,7 +60,9 @@ class Main extends React.Component {
             dispatch(getIncidents(position.coords));
         });
       },
-      (error) => this.setState({ error: error.message }),
+      (error) => {
+        console.log(error);
+        this.setState({ error: error.message })},
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 },
     );
 
@@ -111,8 +126,8 @@ class Main extends React.Component {
           region={{
               latitude: 39.951895,
               longitude: -75.191028,
-              latitudeDelta: 0.09,
-              longitudeDelta: 0.0121
+              latitudeDelta: 0.18,
+              longitudeDelta: 0.0242
           }}
           provider={PROVIDER_GOOGLE}
           customMapStyle= {[
@@ -179,8 +194,11 @@ class Main extends React.Component {
           />
           {this.state.incidents.map(marker => (
             <MapView.Marker 
-              coordinate={marker.coordinates}
+              coordinate={{
+                latitude: marker.coordinates.lat,
+                longitude: marker.coordinates.long}}
               title={"incident"}
+              key={marker.key}
             />
           ))}
 
@@ -254,10 +272,11 @@ class Main extends React.Component {
 }
 
 function mapStateToProps(state) {
+
   console.log(state.loginReducer)
   return {
     ...state,
-    incidents : state.loginReducer.response
+    incidents : state.loginReducer.incidents
   }
   return state;
 }
@@ -283,6 +302,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     height: 22,
     color: 'white',
+  },
+  camIcon:{
+    fontSize: 20,
+    height: 22,
+    color: '#000',
   },
   closeButton: {
     fontSize: 20,
