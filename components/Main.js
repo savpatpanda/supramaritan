@@ -281,6 +281,11 @@ const styles = StyleSheet.create({
     height: 22,
     color: 'white',
   },
+  camIcon:{
+    fontSize: 20,
+    height: 22,
+    color: '#000',
+  },
   closeButton: {
     fontSize: 20,
     marginTop: '10%',
