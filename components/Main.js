@@ -7,15 +7,17 @@ import FormModal from './FormModal';
 import { createStore, applyMiddleware } from 'redux';
 import { connect } from 'react-redux';
 import io from 'socket.io-client'
+import { getIncidents } from '../Actions/main'
 
-//const socket = io('server location');
+const socket = io('http://abhyanfood.herokuapp.com/');
 
 class Main extends React.Component {
 
   state = {
     formModalVisible: false,
     authModalVisible: false,
-    currentCoordinates : {}
+    currentCoordinates : {},
+    incidents: []
   }
 
   componentDidMount(){
@@ -23,6 +25,8 @@ class Main extends React.Component {
       (position) => {
         this.setState({
           currentCoordinates: {lat : position.coords.latitude, long : position.coords.longitude }
+        }, () => {
+            getIncidents(position.coords);
         });
       },
       (error) => this.setState({ error: error.message }),
@@ -59,7 +63,12 @@ class Main extends React.Component {
             title={'Current location'}
             description={'My current location'}
           />
-
+          {this.state.incidents.map(marker => (
+            <MapView.Marker 
+              coordinate={marker.coordinates}
+              title={"incident"}
+            />
+          ))}
         </MapView>
 
         <ActionButton buttonColor="rgba(231,76,60,1)">
@@ -82,6 +91,11 @@ class Main extends React.Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state.loginReducer)
+  return {
+    ...state,
+    incidents : state.loginReducer.response
+  }
   return state;
 }
 const styles = StyleSheet.create({

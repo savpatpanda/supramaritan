@@ -1,5 +1,7 @@
 export function sendServerDistress(severity, selections,currentCoordinates){
 	console.log('callingDistress');
+	console.log(currentCoordinates)
+	console.log(JSON.stringify(currentCoordinates));
 	var bod = JSON.stringify({
 			"user": '5b930ba168081e9b04c952ff',
 			"description": {
@@ -7,10 +9,7 @@ export function sendServerDistress(severity, selections,currentCoordinates){
 				"injury": selections.state.selected2,
 				"other": selections.state.selected3
 			},
-			"coordinates": {
-				"long": currentCoordinates.longitude,
-				"lat": currentCoordinates.latitude
-			},
+			"coordinates": currentCoordinates,
 			"currentPriority": severity.state.selectedIndex
 		});
 	console.log(bod)
@@ -26,3 +25,4 @@ export function sendServerDistress(severity, selections,currentCoordinates){
 		console.error(error);
 	});
 }
+
