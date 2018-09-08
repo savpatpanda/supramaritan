@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View, Modal, TouchableHighlight, Image } from 'react-native';
-import { StyleSheet, Text, View, Modal, TouchableHighlight } from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import ActionButton from 'react-native-circular-action-menu';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -11,7 +10,6 @@ import io from 'socket.io-client';
 import {collectPoints} from '../Actions/modal';
 import police from '../Images/police.png';
 import hospitalImage from '../Images/hospital.png';
-import io from 'socket.io-client'
 import { getIncidents } from '../Actions/main'
 
 const socket = io('http://abhyanfood.herokuapp.com/');
@@ -23,7 +21,7 @@ class Main extends React.Component {
     authModalVisible: false,
     currentCoordinates : {},
     policeStations : [],
-    hospitals: []
+    hospitals: [],
     incidents: []
   }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Modal, TouchableHighlight, Button } from 'react-native';
+import { StyleSheet, Text, View, Modal, TouchableHighlight, Button, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import SelectButton from './SelectButton';
 import { sendServerDistress } from '../Actions/modal';
@@ -35,40 +35,6 @@ export default class FormModal extends React.Component{
 
 		const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }]
 		return(
-				<Modal
-		            animationType="slide"
-		            transparent={false}
-		            visible={this.state.formModalVisible}
-		            onRequestClose={() => {
-		              this.setFormModalVisible(!this.state.formModalVisible);
-		            }}>
-		            <View>
-		              <View>
-		                <View>
-		                  <TouchableHighlight
-		                    style = {styles.out}
-		                    onPress={() => {
-		                      this.setFormModalVisible(!this.state.formModalVisible);
-		                    }}>
-		                    <FontAwesome name = "close" style = {styles.closeButton}/>
-		                  </TouchableHighlight>
-		                </View>
-		                <View style = {styles.formView}>
-		                  <Text style={styles.title}>Distress Signal</Text>
-		                  <SeverityButtons ref='severity'/>
-		                  <SelectButton ref='selections'/>
-		                  <Button 
-			        		style={styles.button}
-			        		title='Submit'
-			        		onPress={() => {
-			        			this.sendDistress();
-			        		}}
-			        	   >
-		        		   </Button>
-		                </View>
-		              </View>
-		            </View>
-		        </Modal>
 			<Modal
 	            animationType="slide"
 	            transparent={false}
@@ -100,12 +66,16 @@ export default class FormModal extends React.Component{
 			          	innerBorderStyle={{width: 0, color: 'white'}}
 			          />
 	                  <SelectButton ref='selections'/>
-	                  <Button 
-		        		style={styles.button}
-		        		title='Submit'
-		        		onPress={this.sendDistress.bind(this)}
-		        	   >
-	        		   </Button>
+	                  	<View
+	        		   	 style = {styles.submitNest}>
+	        		   		<TouchableOpacity
+	        		   		style = {styles.submitStyle}
+	        		   		onPress={() => {
+	        		   			this.sendDistress();
+	        		   		}}>
+	        		   		<Text style = {styles.innerText}>Submit</Text>
+	        		   		</TouchableOpacity>
+						</View>
 	                </View>
 	              </View>
 	            </View>
@@ -136,20 +106,33 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18
   },
-  button: {
-		width: '40%',
-		height: '5%',
-		backgroundColor: 'white',
-		fontSize: 20,
-		color: 'white'
-   },
+  submitNest:{
+  	width: '100%',
+  	height: '25%',
+  	alignItems: 'center',
+  	justifyContent: 'space-between',
+  	backgroundColor: '#000'
+  },
+  submitStyle:{
+  	width: '95%',
+  	height: '100%',
+  	backgroundColor: '#1f9cef',
+  	alignItems: 'center',
+  	justifyContent: 'center',
+  	borderRadius: 10
+  },
+  innerText:{
+  	color: '#fff',
+  	fontWeight: 'bold',
+  	fontSize: 20
+},
    total: {
    		marginTop: 30,
    		marginRight: 30,
    		marginLeft: 30,
    		marginBottom: 30,
    		borderRadius: 10
-   }
+   },
    containerStyle: {
 		height: 40,
 		borderColor: 'white'
