@@ -28,40 +28,40 @@ export default class FormModal extends React.Component{
 
 	render(){
 		return(
-			<Modal
-	            animationType="slide"
-	            transparent={false}
-	            visible={this.state.formModalVisible}
-	            onRequestClose={() => {
-	              this.setFormModalVisible(!this.state.formModalVisible);
-	            }}>
-	            <View>
-	              <View>
-	                <View>
-	                  <TouchableHighlight
-	                    style = {styles.out}
-	                    onPress={() => {
-	                      this.setFormModalVisible(!this.state.formModalVisible);
-	                    }}>
-	                    <FontAwesome name = "close" style = {styles.closeButton}/>
-	                  </TouchableHighlight>
-	                </View>
-	                <View style = {styles.formView}>
-	                  <Text style={styles.title}>Distress Signal</Text>
-	                  <SeverityButtons ref='severity'/>
-	                  <SelectButton ref='selections'/>
-	                  <Button 
-		        		style={styles.button}
-		        		title='Submit'
-		        		onPress={() => {
-		        			this.sendDistress();
-		        		}}
-		        	   >
-	        		   </Button>
-	                </View>
-	              </View>
-	            </View>
-	        </Modal>	
+				<Modal
+		            animationType="slide"
+		            transparent={false}
+		            visible={this.state.formModalVisible}
+		            onRequestClose={() => {
+		              this.setFormModalVisible(!this.state.formModalVisible);
+		            }}>
+		            <View>
+		              <View>
+		                <View>
+		                  <TouchableHighlight
+		                    style = {styles.out}
+		                    onPress={() => {
+		                      this.setFormModalVisible(!this.state.formModalVisible);
+		                    }}>
+		                    <FontAwesome name = "close" style = {styles.closeButton}/>
+		                  </TouchableHighlight>
+		                </View>
+		                <View style = {styles.formView}>
+		                  <Text style={styles.title}>Distress Signal</Text>
+		                  <SeverityButtons ref='severity'/>
+		                  <SelectButton ref='selections'/>
+		                  <Button 
+			        		style={styles.button}
+			        		title='Submit'
+			        		onPress={() => {
+			        			this.sendDistress();
+			        		}}
+			        	   >
+		        		   </Button>
+		                </View>
+		              </View>
+		            </View>
+		        </Modal>
 	    );
     }
 }
@@ -94,5 +94,12 @@ const styles = StyleSheet.create({
 		backgroundColor: 'white',
 		fontSize: 20,
 		color: 'white'
+   },
+   total: {
+   		marginTop: 30,
+   		marginRight: 30,
+   		marginLeft: 30,
+   		marginBottom: 30,
+   		borderRadius: 10
    }
 });
