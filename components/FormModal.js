@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Modal, TouchableHighlight, Button } from 'react-native';
+import { StyleSheet, Text, View, Modal, TouchableHighlight, Button, TouchableOpacity } from 'react-native';
 import { Ionicons, Entypo, FontAwesome } from '@expo/vector-icons';
 import SeverityButtons from './SeverityButtons';
 import SelectButton from './SelectButton';
@@ -50,14 +50,16 @@ export default class FormModal extends React.Component{
 	                  <Text style={styles.title}>Distress Signal</Text>
 	                  <SeverityButtons ref='severity'/>
 	                  <SelectButton ref='selections'/>
-	                  <Button 
-		        		style={styles.button}
-		        		title='Submit'
-		        		onPress={() => {
-		        			this.sendDistress();
-		        		}}
-		        	   >
-	        		   </Button>
+	        		   <View
+	        		   	style = {styles.submitNest}>
+	        		   <TouchableOpacity
+	        		   	style = {styles.submitStyle}
+	        		   	onPress={() => {
+	        		   		this.sendDistress();
+	        		   	}}>
+	        		   	<Text style = {styles.innerText}>Submit</Text>
+	        		   </TouchableOpacity>
+	        		   </View>
 	                </View>
 	              </View>
 	            </View>
@@ -88,11 +90,24 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18
   },
-  button: {
-		width: '40%',
-		height: '5%',
-		backgroundColor: 'white',
-		fontSize: 20,
-		color: 'white'
-   }
+  submitNest:{
+  	width: '100%',
+  	height: '25%',
+  	alignItems: 'center',
+  	justifyContent: 'space-between',
+  	backgroundColor: '#000'
+  },
+  submitStyle:{
+  	width: '95%',
+  	height: '100%',
+  	backgroundColor: '#1f9cef',
+  	alignItems: 'center',
+  	justifyContent: 'center',
+  	borderRadius: 10
+  },
+  innerText:{
+  	color: '#fff',
+  	fontWeight: 'bold',
+  	fontSize: 20
+  }
 });

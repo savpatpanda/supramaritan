@@ -26,12 +26,36 @@ export default class SelectButton extends React.Component {
           <TouchableWithoutFeedback 
           	onPress={() => {this.selectedStatus(!this.state.selected)}}
           	containerStyle={styles.containerStyle}
-          	buttonStyle={{backgroundColor: 'white'}}
+          	buttonStyle={{backgroundColor: opac(this.state.selected)}}
           	title = {"asdf"}
           >
           <View
           	style = {styles.containerStyle}>
-          	<Text style={{color: opac(this.state.selected)}}>Ligma</Text>
+          	<Text>Ligma</Text>
+          </View>
+          </TouchableWithoutFeedback>
+
+          <TouchableWithoutFeedback 
+          	onPress={() => {this.selectedStatus(!this.state.selected2)}}
+          	containerStyle={styles.containerStyle}
+          	buttonStyle={{backgroundColor: opacTwo(this.state.selected2)}}
+          	title = {"asdf"}
+          >
+          <View
+          	style = {styles.containerStyle}>
+          	<Text>Balls</Text>
+          </View>
+          </TouchableWithoutFeedback>
+
+          <TouchableWithoutFeedback 
+          	onPress={() => {this.selectedStatus(!this.state.selected3)}}
+          	containerStyle={styles.containerStyle}
+          	buttonStyle={{backgroundColor: opacThree(this.state.selected3)}}
+          	title = {"asdf"}
+          >
+          <View
+          	style = {styles.containerStyle}>
+          	<Text></Text>
           </View>
           </TouchableWithoutFeedback>
     	);
