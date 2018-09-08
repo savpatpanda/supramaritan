@@ -1,17 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, View, Modal, TouchableHighlight, Button, ListView} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import getListofSignals from '../Actions.modal';
 import Row from './renderRow';
+import {getListofSignals} from '../Actions/modal';
 
 export default class AuthModal extends React.Component{
 	
 	state = {
 		authModalVisible : false,
-		dataSource: [];
+		dataSource: []
 	}
 
 	componentWillMount(){
+		var standardDataSource = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 != r2})
 		var list = getListofSignals(this.props.currentCoordinates);
 		var low = [];
 		var medium = [];
@@ -25,12 +26,17 @@ export default class AuthModal extends React.Component{
 				high.push(list[i])
 			}
 		}
-		var standardDataSource - new ListView.DataSource({rowHasChnaged: (r1,r2) => r1 != r2});
-		this.setState({dataSource :  standardDataSource.cloneWithRows(sortArrayByDistance(list))})
+		this.setState({dataSource : standardDataSource.cloneWithRows(this.sortArrayByDistance(list))})
 	}
 
 	sortArrayByDistance(array){
-		 var output = array.sort(compare);
+		 var output = array.sort(function(a,b){ if(a.distanceToUser<b.distanceToUser){
+			return -1;
+		}else if(a.distanceToUser>b.distanceToUser){
+			return 1;
+		}else{
+			return 0;
+		}});
 		 this.setState({dataSource: output})
 	}
 

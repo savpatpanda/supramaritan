@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/ivan/Documents/Pennapps18/node_modules/react-native/ReactCommon/jsinspector/InspectorInterfaces.cpp \
-  /Users/ivan/Documents/Pennapps18/node_modules/react-native/ReactCommon/jsinspector/InspectorInterfaces.h
+  /Users/bho/Documents/Projects/Master/node_modules/react-native/ReactCommon/jsinspector/InspectorInterfaces.cpp \
+  /Users/bho/Documents/Projects/Master/node_modules/react-native/ReactCommon/jsinspector/InspectorInterfaces.h
