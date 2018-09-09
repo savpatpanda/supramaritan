@@ -5,6 +5,7 @@ import ActionButton from 'react-native-circular-action-menu';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/FontAwesome5';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
+import Icon3 from 'react-native-vector-icons/Entypo';
 import FormModal from './FormModal';
 import AuthModal from './AuthModal';
 import DistressModal from './DistressModal';
@@ -266,15 +267,15 @@ colorChooser(severity){
 
         </MapView>
 
-        <ActionButton buttonColor="rgba(231,76,60,1)">
-          <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={() => {this.props.dispatch({type:'SET_FORM',visible:true})}}>
-            <Icon name="md-document" style={styles.actionButtonIcon} />
+        <ActionButton.Item buttonColor='#3498db' title="ListView" onPress={() => {this.props.dispatch({type:'SET_AUTH',visible:true})}}>
+            <Icon2 name="list-ul" style={styles.actionButtonIcon} />
           </ActionButton.Item>
-          <ActionButton.Item buttonColor='#3498db' title="Notifications" onPress={() => {this.props.dispatch({type:'SET_AUTH',visible:true})}}>
+        <ActionButton buttonColor="rgba(231,76,60,1)">
+          <ActionButton.Item buttonColor='#9b59b6' title="DIstressForm" onPress={() => {this.props.dispatch({type:'SET_FORM',visible:true})}}>
             <Icon name="md-warning" style={styles.actionButtonIcon} />
           </ActionButton.Item>
-          <ActionButton.Item buttonColor='#d34026' title="Distress" onPress={() => {this.props.dispatch({type:'SET_DISTRESS',visible:true})}}>
-            <Icon1 name="exclamation" style={styles.actionButtonIcon} />
+          <ActionButton.Item buttonColor='#d34026' title="Analytics" onPress={() => {this.props.dispatch({type:'SET_DISTRESS',visible:true})}}>
+            <Icon3 name="bar-graph" style={styles.actionButtonIcon} />
           </ActionButton.Item>
         </ActionButton>
 
@@ -325,7 +326,7 @@ const styles = StyleSheet.create({
   },
   actionButtonIcon: {
     fontSize: 20,
-    height: 22,
+    height: 40,
     color: 'white',
   },
   camIcon:{
