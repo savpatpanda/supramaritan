@@ -22,6 +22,11 @@ export const loginReducer = (state = {user: {}}, action) => {
                 ...state,
                 authVisible : action
             }
+        case 'SET_DISTRESS':
+            return{
+                ...state,
+                distressVisible : action
+            }
         default:
             return state;
     }
