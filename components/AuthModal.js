@@ -55,8 +55,8 @@ class AuthModal extends React.Component{
 	}
 
 	componentWillReceiveProps(nextProps){
-		if(nextProps.authModalVisible != this.state.authModalVisible){
-			this.setState({authModalVisible : nextProps.authModalVisible});
+		if(nextProps.authModalVisible && nextProps.authModalVisible.visible != this.state.authModalVisible){
+			this.setState({authModalVisible : nextProps.authModalVisible.visible});
 		}
 		if(nextProps.incidents != this.state.incidents){
 			this.setState({incidents : nextProps.incidents});
@@ -65,7 +65,7 @@ class AuthModal extends React.Component{
 	}
 
  	setAuthFormVisible(visible) {
-    	this.setState({authModalVisible: visible});
+    	this.props.dispatch({type:'SET_AUTH',visible:visible})
   	}
 
   	determineBackgroundColor(severity){
@@ -105,7 +105,7 @@ class AuthModal extends React.Component{
 		            transparent={false}
 		            visible={this.state.authModalVisible}
 		            onRequestClose={() => {
-		              this.set(!this.state.authModalVisible);
+		              this.setAuthFormVisible(!this.state.authModalVisible);
 		            }}>
 		            <View>
 		                <View>
@@ -151,7 +151,8 @@ class AuthModal extends React.Component{
 function mapStateToProps(state) {
   return {
     ...state,
-    incidents : state.loginReducer.incidents
+    incidents : state.loginReducer.incidents,
+    authModalVisible : state.loginReducer.authVisible
   }
 }
 const styles = StyleSheet.create({
