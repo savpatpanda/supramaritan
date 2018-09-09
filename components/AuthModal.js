@@ -79,15 +79,24 @@ class AuthModal extends React.Component{
   	}
 
   	descriptionOfIncident(description){
-  		var output = 'The user has indicated that they need '
+  		var output = 'The user has indicated: '
   		if(description.food){
   			output += 'Food, '
   		}
   		if(description.injury){
   			output += 'Medical Attention, '
   		}
+  		if(description.fire){
+  			output += 'Fire, '
+  		}
+  		if(description.flooding){
+  			output += 'Flooding, '
+  		}
+  		if(description.earthquake){
+  			output += 'Earthquake, '
+  		}
   		if(description.other){
-  			output += 'Other'
+  			output += 'Other, '
   		}
   		if(output.substring(output.length-1,output.length)==', '){
   			output = output.substring(0,output.length-1)
