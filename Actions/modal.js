@@ -61,7 +61,7 @@ export function getListofSignals(currentCoordinates){
 
 export function collectPoints(longitude, latitude, type){
 
-	return fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=1000&type=${type}&key=AIzaSyBXneZ3bJ_NNCgtec5UD8V8664aGQ1EWNA`,{
+	return fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=${type}&key=AIzaSyBXneZ3bJ_NNCgtec5UD8V8664aGQ1EWNA`,{
 	}).then(function(response) { console.log(response); return response.json(); })
 	.then(function(data){
 		var end = [];
@@ -73,7 +73,7 @@ export function collectPoints(longitude, latitude, type){
 			}
 			end.push(coordinate)
 		}
-		return end;
+		return end.slice(0,3);
 	})
 	.catch((error) => {
 		console.error(error);

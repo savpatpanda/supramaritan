@@ -169,7 +169,7 @@ class Main extends React.Component {
             title={'Current location'}
             description={'My current location'}
           />
-          {this.state.incidents.map((marker => (
+          {this.state.incidents.map(marker => (
             <MapView.Marker 
               coordinate={{
                 latitude: marker.coordinates.lat,
