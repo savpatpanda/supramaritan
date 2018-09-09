@@ -197,7 +197,8 @@ const styles = StyleSheet.create({
 		textAlign: 'center'
 	},
 	containerStyle: {
-		height: 40,
+		height: 20,
+		width: 20,
 		backgroundColor: '#000',
 		alignItems: 'center'
 	},
