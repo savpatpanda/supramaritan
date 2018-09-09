@@ -101,7 +101,7 @@ class Main extends React.Component {
     NavigationService.navigate('Detail', this.state.incidents[index]);
 
   }
-  onDoubleClick(){
+  onLongPress(){
     this.setState({showHeatmap: !this.state.showHeatmap});
     this.setState({showDot: !this.state.showDot});
   }
@@ -124,7 +124,7 @@ colorChooser(severity){
 
   render() {
     return (
-      <TouchableWithoutFeedback onDoubleClick={this.onDoubleClick.bind(this)}>
+      <TouchableWithoutFeedback onLongPress={this.onLongPress.bind(this)}>
         <View style={styles.container}>
         <MapView 
           style={styles.gmap}

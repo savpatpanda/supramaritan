@@ -136,7 +136,7 @@ class AuthModal extends React.Component{
 						        	padding: 10,
       								marginTop: 3,
 								    backgroundColor: '#d9f9b1',
-								    alignItems: 'center',
+								    justifyContent: 'flex-start'
 								    backgroundColor: this.determineBackgroundColor(item.currentPriority)
 						        }}
 							  >
