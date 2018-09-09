@@ -46,7 +46,7 @@ export default class SelectButton extends React.Component {
 		          	containerStyle={styles.containerStyle}
 		          	buttonStyle={{backgroundColor: 'white'}}
 		          	title = {"asdf"}>
-		          		<Icon name="food-apple" style={{fontSize: 30, color:this.opac1(!this.state.selected1)}} />
+		          		<Icon name="food-apple" style={{fontSize: 30, color: opac1(!this.state.selected1)}} />
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Food</Text>
 		      	</View>
@@ -56,7 +56,7 @@ export default class SelectButton extends React.Component {
 		          	containerStyle={styles.containerStyle}
 		          	buttonStyle={{backgroundColor: 'white'}}
 		          	title = {"asdf"}>
-		          		<Icon name="hospital" style={{fontSize: 30, color:this.opac2(!this.state.selected2)}} />
+		          		<Icon name="hospital" style={{fontSize: 30, color: opac2(!this.state.selected2)}} />
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Injury</Text>
 		      	</View>
@@ -66,7 +66,7 @@ export default class SelectButton extends React.Component {
 		          	containerStyle={styles.containerStyle}
 		          	buttonStyle={{backgroundColor: 'white'}}
 		          	title = {"asdf"}>
-		          		<Icon1 name="fire" style={{fontSize: 30, color:this.opac3(!this.state.selected3)}} />
+		          		<Icon1 name="fire" style={{fontSize: 30, color: opac3(!this.state.selected3)}} />
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Fire</Text>
 		      	</View>
@@ -77,7 +77,7 @@ export default class SelectButton extends React.Component {
 		          	containerStyle={styles.containerStyle}
 		          	buttonStyle={{backgroundColor: 'white'}}
 		          	title = {"asdf"}>
-		          		<Icon2 name="ios-water" style={{fontSize: 30, color:this.opac4(!this.state.selected4)}} />
+		          		<Icon2 name="ios-water" style={{fontSize: 30, color: opac4(!this.state.selected4)}} />
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Flooding</Text>
 		      	</View>
@@ -87,7 +87,7 @@ export default class SelectButton extends React.Component {
 		          	containerStyle={styles.containerStyle}
 		          	buttonStyle={{backgroundColor: 'white'}}
 		          	title = {"asdf"}>
-		          		<Icon name="earth" style={{fontSize: 30, color:this.opac5(!this.state.selected5)}} />
+		          		<Icon name="earth" style={{fontSize: 30, color: opac5(!this.state.selected5)}} />
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Earthquake</Text>
 		      	</View>
@@ -97,11 +97,12 @@ export default class SelectButton extends React.Component {
 		          	containerStyle={styles.containerStyle}
 		          	buttonStyle={{backgroundColor: 'white'}}
 		          	title = {"asdf"}>
-		          		<Icon3 name="food-apple" style={{fontSize: 30, color:this.opac6(!this.state.selected6)}} />
+		          		<Icon3 name="food-apple" style={{fontSize: 30, color: opac6(!this.state.selected6)}} />
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Other</Text>
 		      	</View>
 	          </View>
+	        </View>
 	        </View>
     	);
  	}
@@ -166,12 +167,12 @@ const styles = StyleSheet.create({
 	},
 	rows:{
 		flex: 1,
-		flexDirection: 'horizontal',
+		flexDirection: 'row',
 		alignItems: 'center'
 	},
 	columns:{
 		flex: 1,
-		flexDirection: 'vertical',
+		flexDirection: 'column',
 		alignItems: 'center'
 	}
 });

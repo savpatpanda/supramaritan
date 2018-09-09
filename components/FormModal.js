@@ -5,7 +5,6 @@ import SelectButton from './SelectButton';
 import { sendServerDistress } from '../Actions/modal';
 import { ButtonGroup } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation';
-import Navigator from './Navigator';
 import { connect } from 'react-redux';
 
 
