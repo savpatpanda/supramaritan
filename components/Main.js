@@ -83,9 +83,18 @@ class Main extends React.Component {
 
   }
 
-
   setAuthModalVisible(visible) {
     this.setState({authModalVisible: visible});
+  }
+
+  colorMarker(severity){
+      if(severity ==1){
+        return '#efb802'
+      }else if(severity ==2){
+        return '#ef8802'
+      }else{
+        return '#ef4102'
+      }
   }
 
   segueToDetailView(index){
@@ -180,6 +189,7 @@ class Main extends React.Component {
                 longitude: marker.coordinates.long}}
               title={"incident"}
               key={marker.key}
+              pinColor={this.colorMarker(marker.currentPriority)}
               onPress={this.segueToDetailView.bind(this, marker.key)}
             />
           ))}
