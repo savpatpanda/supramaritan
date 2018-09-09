@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon1 from 'react-native-vector-icons/SimpleLineIcons';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/FontAwesome5';
+import { Col, Row, Grid } from 'react-native-easy-grid';
 
 export default class SelectButton extends React.Component {
 
@@ -38,9 +39,9 @@ export default class SelectButton extends React.Component {
 
 	render() {
     	return (
-    		<View style={styles.column}>
-	          <View style={styles.row}>
-	          	<View style={styles.column}>
+    		<Grid>
+    			<Row>
+    				<View style={styles.column}>
 		          <TouchableWithoutFeedback 
 		          	onPress={() => {this.selectedStatus1(!this.state.selected1)}}
 		          	containerStyle={styles.containerStyle}
@@ -55,9 +56,9 @@ export default class SelectButton extends React.Component {
 		          		}} />
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Food</Text>
-		      	</View>
+		      		</View>
 
-		      	<View style={styles.column}>
+		      		<View style={styles.column}>
 		          <TouchableWithoutFeedback 
 		          	onPress={() => {this.selectedStatus2(!this.state.selected2)}}
 		          	containerStyle={styles.containerStyle}
@@ -90,10 +91,26 @@ export default class SelectButton extends React.Component {
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Fire</Text>
 		      	</View>
-		      </View>
+    			</Row>
+    			<Row>
+    				<View style={styles.column}>
+		          <TouchableWithoutFeedback 
+		          	onPress={() => {this.selectedStatus3(!this.state.selected3)}}
+		          	containerStyle={styles.containerStyle}
+		          	buttonStyle={{backgroundColor: 'white'}}
+		          	title = {"asdf"}>
+		          		<Icon1 name="fire" style={{
+		          			fontSize: 30, 
+		          			color: opac3(!this.state.selected3),
+		          			borderWidth: 2,
+		          			borderColor: opac3(!this.state.selected3),
+		          			borderRadius: 4
+		          		}} />
+		          </TouchableWithoutFeedback>
+		          <Text style={styles.text}>Fire</Text>
+		      	</View>
 
-			  <View style={styles.row}>
-		        <View style={styles.column}>
+		      	<View style={styles.column}>
 		          <TouchableWithoutFeedback 
 		          	onPress={() => {this.selectedStatus4(!this.state.selected4)}}
 		          	containerStyle={styles.containerStyle}
@@ -128,25 +145,10 @@ export default class SelectButton extends React.Component {
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Earthquake</Text>
 		      	</View>
-		      	
-		      	<View style={styles.column}>
-		          <TouchableWithoutFeedback 
-		          	onPress={() => {this.selectedStatus6(!this.state.selected6)}}
-		          	containerStyle={styles.containerStyle}
-		          	buttonStyle={{backgroundColor: 'white'}}
-		          	title = {"asdf"}>
-		          		<Icon3 name="food-apple" style={{
-		          			fontSize: 30, 
-		          			color: opac6(!this.state.selected6),
-		          			borderWidth: 2,
-		          			borderColor: opac6(!this.state.selected6),
-		          			borderRadius: 4
-		          		}} />
-		          </TouchableWithoutFeedback>
-		          <Text style={styles.text}>Other</Text>
-		      	</View>
-	          </View>
-	        </View>
+    			</Row>
+			</Grid>
+
+    		
     	);
  	}
 }
