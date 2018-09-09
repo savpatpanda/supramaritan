@@ -42,7 +42,8 @@ class Main extends React.Component {
     policeStations : [],
     hospitals: [],
     incidents: [],
-    showHeatmap:false
+    showHeatmap:false,
+    showDot: true
   }
 
   componentWillReceiveProps(nextProps){
@@ -102,19 +103,23 @@ class Main extends React.Component {
   }
   onLongPress(){
     this.setState({showHeatmap: !this.state.showHeatmap});
+    this.setState({showDot: !this.state.showDot});
   }
 
 
-colorChooser(severity){
-    console.log(severity)
-    if(severity == 1){
 
-        return '#efb802'
+colorChooser(severity){
+    if(!this.state.showDot){
+      return {height: 12, width: 10, visibility: 'false', opacity: 0}
+    }else{
+    if(severity == 1){
+        return {height: 12, width: 10, visibility: 'true', color: '#efb802'}
       }else if(severity ==2){
-        return '#ef8802'
+        return {height: 12, width: 10, visibility: 'true', color: '#ef8802'}
       }else if(severity == 3){
-        return '#ef4102'
+        return {height: 12, width: 10, visibility: 'true', color: '#ef4102'}
       }
+    }
   }
 
   render() {
@@ -201,14 +206,11 @@ colorChooser(severity){
               title={"incident"}
               key={marker.key}
               style = {{height: 10, width: 10}}
+
               onPress={this.segueToDetailView.bind(this, marker.key)}
             >
             <View>
-              <Icon2 name="circle" style={{
-                width: 10,
-                height: 12,
-                color: this.colorChooser(marker.currentPriority)
-              }}/>
+              <Icon2 name="circle" style={this.colorChooser(marker.currentPriority)}/>
             </View>
             </MapView.Marker>
           ))}

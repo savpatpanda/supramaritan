@@ -15,7 +15,7 @@ export default class SelectButton extends React.Component {
 	    selected3: false,
 	    selected4: false,
 	    selected5: false,
-	    selected6: false
+	    selected6: false,
 	}
 
 	selectedStatus1(status) {
