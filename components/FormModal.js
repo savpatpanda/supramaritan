@@ -50,7 +50,7 @@ class FormModal extends React.Component{
 		return(
 				<View>
 				<Modal
-					visible: {this.state.formVisible}
+					visible = {this.state.formVisible}
 					onRequestClose={() => {
 		              this.setFormVisible(!this.state.formVisible);
 		            }}>
@@ -173,7 +173,5 @@ const styles = StyleSheet.create({
 		backgroundColor: 'white',
     margin: 10,
     justifyContent: undefined,
-    animationType: "slide",
-	transparent : false
 	}
 });
