@@ -178,7 +178,7 @@ export default class SelectButton extends React.Component {
 
 function opac1 (asdf){
 	if(!asdf){
-		return '#099553'
+		return '#e81f04'
 	} else{
 		return '#a5aeb7'
 	}
@@ -186,7 +186,7 @@ function opac1 (asdf){
 
 function opac2 (asdf){
 	if(!asdf){
-		return '#123'
+		return '#435ce8'
 	} else{
 		return '#a5aeb7'
 	}
@@ -194,7 +194,7 @@ function opac2 (asdf){
 
 function opac3 (asdf){
 	if(!asdf){
-		return '#123'
+		return '#f9930c'
 	} else{
 		return '#a5aeb7'
 	}
@@ -202,7 +202,7 @@ function opac3 (asdf){
 
 function opac4 (asdf){
 	if(!asdf){
-		return '#123'
+		return '#230cf9'
 	} else{
 		return '#a5aeb7'
 	}
@@ -210,7 +210,7 @@ function opac4 (asdf){
 
 function opac5 (asdf){
 	if(!asdf){
-		return '#123'
+		return '#0a7017'
 	} else{
 		return '#a5aeb7'
 	}
@@ -220,7 +220,7 @@ function opac6 (asdf){
 	if(!asdf){
 		return '#123'
 	} else{
-		return '#a5aeb7'
+		return '#1a1a1a'
 	}
 }
 
