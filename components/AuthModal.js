@@ -3,12 +3,14 @@ import { StyleSheet, Text, View, Modal, Button, TouchableOpacity, TouchableHighl
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { getListofSignals } from '../Actions/modal';
 import { connect } from 'react-redux';
+import Swipeout from 'react-native-swipeout';
 
 class AuthModal extends React.Component{
 	
 	state = {
 		authModalVisible : false,
-		dataSource: []
+		dataSource: [],
+		mySource: []
 	}
 	passList(list){
 		console.log("DECK")
@@ -52,6 +54,19 @@ class AuthModal extends React.Component{
 			}
 		})
 		this.setState({dataSource: high.concat(medium, low)})
+		this.setState({mySource: findMySignals(dataSource,'5b930ba168081e9b04c952ff')}) //come back to and send the file the userID
+	}
+
+	findMySignals(whole, userID){
+		var output = [];
+		for(var i = 0; i < whole.length; i++){
+			if(whole[i].user.type==userID){
+				output.push(whole[i])
+				whole.slice(i,i+1)
+				i--
+			}
+		}
+		return output;
 	}
 
 	componentWillReceiveProps(nextProps){
@@ -126,6 +141,39 @@ class AuthModal extends React.Component{
 		                    <Icon name = "close" style = {styles.closeButton}/>
 		                  </TouchableHighlight>
 		                </View>
+		                <View>
+		                	<Text style={styles.title}>Your Signals</Text>
+		                </View>
+		                <ScrollView>
+		                  {this.state.mySource.map(item => (
+			                  
+			                  <Swipeout right={
+			                  	  text: 'Delete',
+							      backgroundColor: 'red',
+							      underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
+							      onPress: () => { this.deleteNote(rowData) 
+			                  }
+			                  <TouchableHighlight
+						        style={{
+						        	padding: 10,
+      								marginTop: 3,
+								    backgroundColor: '#d9f9b1',
+								    justifyContent: 'flex-start',
+								    backgroundColor: this.determineBackgroundColor(item.currentPriority)
+						        }}
+							  >
+							  <View>
+							  	<Text style = {styles.text}>
+                        			Severity: {item.currentPriority}
+                     			</Text>
+                     			<Text style = {styles.text}>
+                     				Description: {this.descriptionOfIncident(item.description)}
+                     			</Text>
+                     			</View>
+							  </TouchableHighlight>
+						  ))
+		                  }
+		                </ScrollView>
 		                <View>
 		                	<Text style={styles.title}>Signals Near You</Text>
 		           		</View>
