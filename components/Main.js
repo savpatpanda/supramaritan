@@ -273,7 +273,7 @@ colorChooser(severity){
           <ActionButton.Item buttonColor='#3498db' title="Notifications" onPress={() => {this.props.dispatch({type:'SET_AUTH',visible:true})}}>
             <Icon name="md-warning" style={styles.actionButtonIcon} />
           </ActionButton.Item>
-          <ActionButton.Item buttonColor='##d34026' title="Distress" onPress={() => {this.props.dispatch({type:'SET_DISTRESS',visible:true})}}>
+          <ActionButton.Item buttonColor='#d34026' title="Distress" onPress={() => {this.props.dispatch({type:'SET_DISTRESS',visible:true})}}>
             <Icon1 name="exclamation" style={styles.actionButtonIcon} />
           </ActionButton.Item>
         </ActionButton>
