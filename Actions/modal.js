@@ -91,7 +91,7 @@ export function collectPoints(longitude, latitude, type){
 			}
 			end.push(coordinate)
 		}
-		return end.slice(0,3);
+		return end.slice(0,5);
 	})
 	.catch((error) => {
 		console.error(error);
