@@ -53,6 +53,7 @@ class FormModal extends React.Component{
 		            animationType="slide"
 		            transparent={false}
 		            visible={this.state.formVisible}
+		            presentationStyle='popover'
 		            onRequestClose={() => {
 		              this.setFormVisible(!this.state.formVisible);
 		            }}>
