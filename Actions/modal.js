@@ -10,7 +10,7 @@ export function sendServerDistress(severity, selections,currentCoordinates){
 				"other": selections.state.selected3
 			},
 			"coordinates": currentCoordinates,
-			"currentPriority": severity
+			"currentPriority": severity,
 		});
 	console.log(bod)
 	fetch('https://abhyanfood.herokuapp.com/storedUsers',{
@@ -21,12 +21,14 @@ export function sendServerDistress(severity, selections,currentCoordinates){
 		},
 		body: bod
 	}).then((response) => console.log(response))
-	.catch((error) =>{
+	.catch((error) => {
 		console.error(error);
 	});
 }
 
 export function getListofSignals(currentCoordinates){
+
+	console.log(currentCoordinates)
 	var bod = JSON.stringify({
 			"coordinates": currentCoordinates
 	});

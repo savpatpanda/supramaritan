@@ -169,7 +169,7 @@ class Main extends React.Component {
             title={'Current location'}
             description={'My current location'}
           />
-          {this.state.incidents.map(marker => (
+          {this.state.incidents.map((marker => (
             <MapView.Marker 
               coordinate={{
                 latitude: marker.coordinates.lat,
@@ -245,6 +245,11 @@ class Main extends React.Component {
           formModalVisible={this.state.formModalVisible}
         />
 
+        <AuthModal
+          currentCoordinates={this.state.currentCoordinates}
+          authModalVisible={this.state.authModalVisible}
+        />
+
 
       </View>
 
@@ -316,9 +321,6 @@ const styles = StyleSheet.create({
 
 /*
 
-<AuthModal
-          coordinates={this.state.currentCoordinates}
-          authModalVisible={this.state.authModalVisible}
-        />
+
         */
 export default connect(mapStateToProps)(Main);

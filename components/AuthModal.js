@@ -1,17 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View, Modal, Button, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, Modal, Button, TouchableOpacity, TouchableHighlight, ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {getListofSignals} from '../Actions/modal';
+import { getListofSignals } from '../Actions/modal';
+import { connect } from 'react-redux';
 
-export default class AuthModal extends React.Component{
+class AuthModal extends React.Component{
 	
 	state = {
 		authModalVisible : false,
 		dataSource: []
 	}
-
-	componentWillMount(){
-		var list = getListofSignals(this.props.currentCoordinates);
+	passList(list){
+		console.log("DECK")
 		var low = [];
 		var medium = [];
 		var high = [];
@@ -54,9 +54,13 @@ export default class AuthModal extends React.Component{
 		this.setState({dataSource: high.concat(medium, low)})
 	}
 
-	componentWillReceiveProps(){
-		if(this.props.authModalVisible != this.state.authModalVisible){
-			this.state.authModalVisible = this.props.authModalVisible;
+	componentWillReceiveProps(nextProps){
+		if(nextProps.authModalVisible != this.state.authModalVisible){
+			this.setState({authModalVisible : nextProps.authModalVisible});
+		}
+		if(nextProps.incidents != this.state.incidents){
+			this.setState({incidents : nextProps.incidents});
+			this.passList(nextProps.incidents.incidents);
 		}
 	}
 
@@ -66,12 +70,32 @@ export default class AuthModal extends React.Component{
 
   	determineBackgroundColor(severity){
   		if(severity ==1){
-  			return '#efd915'
+  			return '#efb802'
   		}else if(severity ==2){
-  			return '#ef9014'
+  			return '#ef8802'
   		}else{
-  			return '#ed3510'
+  			return '#ef4102'
   		}
+  	}
+
+  	descriptionOfIncident(description){
+  		var output = 'The user has indicated that they need '
+  		if(description.food){
+  			output += 'Food, '
+  		}
+  		if(description.injury){
+  			output += 'Medical Attention, '
+  		}
+  		if(description.other){
+  			output += 'Other'
+  		}
+  		if(output.substring(output.length-1,output.length)==', '){
+  			output = output.substring(0,output.length-1)
+  		}else{
+  			output += 'N/A'
+  		}
+  		return output;
+
   	}
 
 	render(){
@@ -93,35 +117,46 @@ export default class AuthModal extends React.Component{
 		                    <Icon name = "close" style = {styles.closeButton}/>
 		                  </TouchableHighlight>
 		                </View>
-		                <View style = {styles.formView}>
-		                  <Text style={styles.title}>Signals Near You</Text>
-		                  {this.state.dataSource.map((item, index) => (
-			                  <TouchableOpacity
-						        key = {item.id}
-						        style={
+		                <View>
+		                	<Text style={styles.title}>Signals Near You</Text>
+		           		</View>
+		                <ScrollView>
+		                  {this.state.dataSource.map(item => (
+			                  <TouchableHighlight
+						        style={{
 						        	padding: 10,
       								marginTop: 3,
 								    backgroundColor: '#d9f9b1',
 								    alignItems: 'center',
-								    backgroundColor: determineBackgroundColor(item.severity)
-						        }
+								    backgroundColor: this.determineBackgroundColor(item.currentPriority)
+						        }}
 							  >
+							  <View>
 							  	<Text style = {styles.text}>
-                        			Severity: {item.severity}
+                        			Severity: {item.currentPriority}
                      			</Text>
                      			<Text style = {styles.text}>
-                     				{item.description}
+                     				Description: {this.descriptionOfIncident(item.description)}
                      			</Text>
-							  </TouchableOpacity>
+                     			</View>
+							  </TouchableHighlight>
 						  ))
 		                  }
-		                </View>
+		                </ScrollView>
 		            </View>
 		        </Modal>	
 	    );
     }
 }
+function mapStateToProps(state) {
 
+  console.log(state.loginReducer)
+  return {
+    ...state,
+    incidents : state.loginReducer.incidents
+  }
+  return state;
+}
 const styles = StyleSheet.create({
   closeButton: {
     fontSize: 20,
@@ -142,7 +177,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: 'bold',
-    fontSize: 18
+    fontSize: 18,
+    alignSelf: 'center',
+    marginTop: 5,
+    marginBottom: 7
   },
   button: {
 		width: '40%',
@@ -181,6 +219,9 @@ const styles = StyleSheet.create({
       alignItems: 'center',
    },
    text: {
-      color: '#4f603c'
+      color: '#000'
    }
 });
+
+export default connect(mapStateToProps)(AuthModal);
+
