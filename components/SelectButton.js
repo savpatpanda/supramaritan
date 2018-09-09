@@ -56,6 +56,7 @@ export default class SelectButton extends React.Component {
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Food</Text>
 		      	</View>
+
 		      	<View style={styles.column}>
 		          <TouchableWithoutFeedback 
 		          	onPress={() => {this.selectedStatus2(!this.state.selected2)}}
@@ -72,6 +73,7 @@ export default class SelectButton extends React.Component {
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Injury</Text>
 		      	</View>
+
 		      	<View style={styles.column}>
 		          <TouchableWithoutFeedback 
 		          	onPress={() => {this.selectedStatus3(!this.state.selected3)}}
@@ -89,6 +91,7 @@ export default class SelectButton extends React.Component {
 		          <Text style={styles.text}>Fire</Text>
 		      	</View>
 		      </View>
+
 			  <View style={styles.row}>
 		        <View style={styles.column}>
 		          <TouchableWithoutFeedback 
@@ -106,6 +109,7 @@ export default class SelectButton extends React.Component {
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Flooding</Text>
 		      	</View>
+
 		      	<View style={styles.column}>
 		          <TouchableWithoutFeedback 
 		          	onPress={() => {this.selectedStatus5(!this.state.selected5)}}
@@ -124,6 +128,7 @@ export default class SelectButton extends React.Component {
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Earthquake</Text>
 		      	</View>
+		      	
 		      	<View style={styles.column}>
 		          <TouchableWithoutFeedback 
 		          	onPress={() => {this.selectedStatus6(!this.state.selected6)}}

@@ -11,6 +11,9 @@ import { connect } from 'react-redux';
 import {collectPoints} from '../Actions/modal';
 import police from '../Images/police.png';
 import hospitalImage from '../Images/hospital.png';
+import red_circle from '../Images/red_circle.png';
+import orange_circle from '../Images/orange_circle.png';
+import yellow_circle from '../Images/yellow_circle.png';
 import { getIncidents } from '../Actions/main'
 import NavigationService from '../NavigationService';
 import io from 'socket.io-client'
@@ -89,13 +92,13 @@ class Main extends React.Component {
     this.setState({authModalVisible: visible});
   }
 
-  colorMarker(severity){
+  chooseImage(severity){
       if(severity ==1){
-        return '#efb802'
+        return yellow_circle
       }else if(severity ==2){
-        return '#ef8802'
+        return orange_circle
       }else{
-        return '#ef4102'
+        return red_circle
       }
   }
 
@@ -191,7 +194,8 @@ class Main extends React.Component {
                 longitude: marker.coordinates.long}}
               title={"incident"}
               key={marker.key}
-              pinColor={this.colorMarker(marker.severity)}
+              image ={this.chooseImage(marker.severity)}
+              style = {{height: 10, width: 10}}
               onPress={this.segueToDetailView.bind(this, marker.key)}
             />
           ))}
