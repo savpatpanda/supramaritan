@@ -40,7 +40,7 @@ export default class SelectButton extends React.Component {
 	render() {
     	return (
 
-    		<View style={styles.column}>
+    		<View>
 	          <View style={styles.row}>
 	          	<View style={styles.column}>
 		          <TouchableWithoutFeedback 
