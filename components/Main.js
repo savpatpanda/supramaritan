@@ -98,7 +98,7 @@ class Main extends React.Component {
   segueToDetailView(index){
     console.log(`${index} pressed`);
     console.log(this.state.incidents[index]);
-    NavigationService.navigate('Detail', this.state.incidents[index]);
+    NavigationService.navigate('Detail', {incident: this.state.incidents[index]});
 
   }
   onLongPress(){
@@ -203,7 +203,7 @@ colorChooser(severity){
               coordinate={{
                 latitude: marker.coordinates.lat,
                 longitude: marker.coordinates.long}}
-              title={"incident"}
+              title={`Incident Reported`}
               key={marker.key}
               style = {{height: 10, width: 10}}
 

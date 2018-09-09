@@ -111,7 +111,8 @@ const styles = StyleSheet.create({
 		marginTop:-15,
 		fontSize:30,
 		fontWeight:'200',
-		left:12
+		left:12,
+		alignSelf:'center'
 	},
 	severityShort:{
 		fontWeight:'900',
@@ -137,7 +138,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     fontSize: 18,
-    alignItems: 'center'
+    alignSelf: 'center'
   },
   explanation:{
   	alignItems: 'center'
