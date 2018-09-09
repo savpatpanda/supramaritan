@@ -44,7 +44,7 @@ export default class SelectButton extends React.Component {
 		          <TouchableWithoutFeedback 
 		          	onPress={() => {this.selectedStatus1(!this.state.selected1)}}
 		          	containerStyle={styles.containerStyle}
-		          	//buttonStyle={{backgroundColor: 'white'}}
+		          	buttonStyle={{backgroundColor: 'white'}}
 		          	title = {"asdf"}>
 		          		<Icon name="food-apple" style={{
 		          			fontSize: 30, 
@@ -60,7 +60,7 @@ export default class SelectButton extends React.Component {
 		          <TouchableWithoutFeedback 
 		          	onPress={() => {this.selectedStatus2(!this.state.selected2)}}
 		          	containerStyle={styles.containerStyle}
-		          	//buttonStyle={{backgroundColor: 'white'}}
+		          	buttonStyle={{backgroundColor: 'white'}}
 		          	title = {"asdf"}>
 		          		<Icon name="hospital" style={{
 		          			fontSize: 30, 
@@ -76,7 +76,7 @@ export default class SelectButton extends React.Component {
 		          <TouchableWithoutFeedback 
 		          	onPress={() => {this.selectedStatus3(!this.state.selected3)}}
 		          	containerStyle={styles.containerStyle}
-		          	//buttonStyle={{backgroundColor: 'white'}}
+		          	buttonStyle={{backgroundColor: 'white'}}
 		          	title = {"asdf"}>
 		          		<Icon1 name="fire" style={{
 		          			fontSize: 30, 
@@ -94,7 +94,7 @@ export default class SelectButton extends React.Component {
 		          <TouchableWithoutFeedback 
 		          	onPress={() => {this.selectedStatus4(!this.state.selected4)}}
 		          	containerStyle={styles.containerStyle}
-		          	//buttonStyle={{backgroundColor: 'white'}}
+		          	buttonStyle={{backgroundColor: 'white'}}
 		          	title = {"asdf"}>
 		          		<Icon2 name="ios-water" style={{
 		          			fontSize: 30, 
@@ -110,7 +110,7 @@ export default class SelectButton extends React.Component {
 		          <TouchableWithoutFeedback 
 		          	onPress={() => {this.selectedStatus5(!this.state.selected5)}}
 		          	containerStyle={styles.containerStyle}
-		          	//buttonStyle={{backgroundColor: 'white'}}
+		          	buttonStyle={{backgroundColor: 'white'}}
 		          	title = {"asdf"}>
 		          		<Icon name="earth" style={{
 		          			fontSize: 30, 
@@ -126,7 +126,7 @@ export default class SelectButton extends React.Component {
 		          <TouchableWithoutFeedback 
 		          	onPress={() => {this.selectedStatus6(!this.state.selected6)}}
 		          	containerStyle={styles.containerStyle}
-		          	//buttonStyle={{backgroundColor: 'white'}}
+		          	buttonStyle={{backgroundColor: 'white'}}
 		          	title = {"asdf"}>
 		          		<Icon3 name="food-apple" style={{
 		          			fontSize: 30, 
@@ -210,7 +210,6 @@ const styles = StyleSheet.create({
 	},
 	columns:{
 		flex: 1,
-		flexDirection: 'column',
 		alignItems: 'center'
 	}
 });

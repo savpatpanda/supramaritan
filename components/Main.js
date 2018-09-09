@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Modal, TouchableHighlight, Image, TouchableWith
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import ActionButton from 'react-native-circular-action-menu';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Icon1 from 'react-native-vector-icons/FontAwesome5';
 import FormModal from './FormModal';
 import AuthModal from './AuthModal';
 import { createStore, applyMiddleware } from 'redux';
@@ -28,6 +29,7 @@ class Main extends React.Component {
   state = {
     formModalVisible: false,
     authModalVisible: false,
+    distressVisible: false,
     currentCoordinates : {},
     policeStations : [],
     hospitals: [],
@@ -51,6 +53,7 @@ class Main extends React.Component {
     const { dispatch } = this.props;
     dispatch({type:'SET_FORM',visible:false})
     dispatch({type:'SET_AUTH',visible:false})
+    dispatch({type:'SET_DISTRESS',visible:false})
     console.log('ay')
     this.watchId = navigator.geolocation.watchPosition(
       (position) => {
@@ -235,6 +238,9 @@ class Main extends React.Component {
           </ActionButton.Item>
           <ActionButton.Item buttonColor='#3498db' title="Notifications" onPress={() => {this.props.dispatch({type:'SET_AUTH',visible:true})}}>
             <Icon name="md-warning" style={styles.actionButtonIcon} />
+          </ActionButton.Item>
+          <ActionButton.Item buttonColor='#3498db' title="Distress" onPress={() => {this.props.dispatch({type:'SET_DISTRESS',visible:true})}}>
+            <Icon1 name="exclamation" style={styles.actionButtonIcon} />
           </ActionButton.Item>
         </ActionButton>
 
