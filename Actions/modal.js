@@ -58,6 +58,24 @@ export function getListofSignals(currentCoordinates){
 	});
 }
 
+export function resolve(incident){
+
+	var bod = JSON.stringify({
+			"_id": incident.object._id
+	});
+	return fetch('https://abhyanfood.herokuapp.com/resolveIncident',{
+		method: 'POST',
+		headers: {
+			"Accept": 'application/json',
+	   		'Content-Type': 'application/json',
+		},
+		body: bod
+	}).then((response) => {return 'Successfully deleted signal'})
+	.catch((error) =>{
+		console.error(error);
+	});
+}
+
 export function collectPoints(longitude, latitude, type){
 
 	return fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=1000&type=${type}&key=AIzaSyBXneZ3bJ_NNCgtec5UD8V8664aGQ1EWNA`,{
