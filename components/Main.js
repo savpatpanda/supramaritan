@@ -66,6 +66,7 @@ class Main extends React.Component {
               this.setState({hospitals: set2})
             });
           }
+          console.log(position.coords)
           dispatch(getIncidents(position.coords));
         });
       },
@@ -216,7 +217,7 @@ class Main extends React.Component {
           {this.state.showHeatmap &&
           <MapView.Heatmap points={this.state.incidents}
            opacity={1}
-           radius={200}
+           radius={30}
            onZoomRadiusChange={{
                zoom: [0, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15, 16, 17],
                radius: [10, 10, 15, 20, 30, 60, 80, 100, 120, 150, 180, 200, 250, 250]
