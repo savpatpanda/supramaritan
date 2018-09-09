@@ -78,7 +78,7 @@ class DistressModal extends React.Component{
 						      >
 						       <AnimateNumber style={styles.severity} countBy={1} value={this.state.incidents.severityFactor}/>
 						       <Text style={styles.severityText}> Severity Level </Text>
-						       <AnimateNumber style={styles.severity} countBy={1} value={this.state.incidents.incidents.length}/>
+						       <AnimateNumber style={styles.severity} countBy={3} value={this.state.incidents.incidents.length}/>
 						       <Text style={styles.severityText}> Total Incident Count </Text>
 						       <Text style={styles.severityShort}> {this.state.incidents.highest.most} </Text>
 						       <Text style={styles.severityText}> Incident Type ({this.state.incidents.highest.amount} times)</Text>
