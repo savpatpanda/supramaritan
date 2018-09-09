@@ -103,12 +103,15 @@ class Main extends React.Component {
     this.setState({showHeatmap: !this.state.showHeatmap});
   }
 
-  colorChooser(severity){
-    if(severity ==1){
+
+colorChooser(severity){
+    console.log(severity)
+    if(severity == 1){
+
         return '#efb802'
       }else if(severity ==2){
         return '#ef8802'
-      }else{
+      }else if(severity == 3){
         return '#ef4102'
       }
   }
@@ -203,7 +206,7 @@ class Main extends React.Component {
               <Icon2 name="circle" style={{
                 width: 10,
                 height: 12,
-                color: colorChooser(marker.currentPriority)
+                color: this.colorChooser(marker.currentPriority)
               }}/>
             </View>
             </MapView.Marker>
