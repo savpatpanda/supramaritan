@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Modal, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux';
 import { RNCamera } from 'react-native-camera';
 
-export default class Camera extends React.Component{
+class Camera extends React.Component{
 
 	render(){
 		return(
@@ -42,6 +43,11 @@ export default class Camera extends React.Component{
 
 
 
+function mapStateToProps(state) {
+  return {
+    ...state,
+  }
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -63,3 +69,4 @@ const styles = StyleSheet.create({
     margin: 20
   }
 });
+export default connect(mapStateToProps)(Camera);
