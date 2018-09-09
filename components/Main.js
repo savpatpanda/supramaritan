@@ -90,16 +90,6 @@ class Main extends React.Component {
     this.setState({authModalVisible: visible});
   }
 
-  chooseImage(severity){
-      if(severity ==1){
-        return yellow_circle
-      }else if(severity ==2){
-        return orange_circle
-      }else{
-        return red_circle
-      }
-  }
-
   segueToDetailView(index){
     console.log(`${index} pressed`);
     console.log(this.state.incidents[index]);
@@ -192,7 +182,15 @@ class Main extends React.Component {
                 longitude: marker.coordinates.long}}
               title={"incident"}
               key={marker.key}
-              image ={this.chooseImage(severity)}
+              image ={function(marker.currentPriority){
+                if(marker.currentPriority==1){
+                  return yellow_circle
+                }else if(marker.currentPriority==2){
+                  return orange_circle
+                }else{
+                  return red_circle
+                }
+              }}
               onPress={this.segueToDetailView.bind(this, marker.key)}
             />
           ))}
