@@ -30,16 +30,16 @@ class DistressModal extends React.Component{
 				<Modal
 		            animationType="slide"
 		            transparent={false}
-		            visible={this.state.formVisible}
+		            visible={this.state.distressVisible}
 		            onRequestClose={() => {
-		              this.setFormVisible(!this.state.formVisible);
+		              this.setDistressVisible(!this.state.distressVisible);
 		            }}>
 		            <View>
 		                <View>
 		                  <TouchableHighlight
 		                    style = {styles.out}
 		                    onPress={() => {
-		                      this.setFormVisible(!this.state.formVisible);
+		                      this.setDistressVisible(!this.state.distressVisible);
 		                    }}>
 		                    <Icon name = "close" style = {styles.closeButton}/>
 		                  </TouchableHighlight>
