@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Modal, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { RNCamera } from 'react-native-camera';
+import { sendPicture } from '../Actions/main'
 
 class Camera extends React.Component{
 
@@ -31,16 +32,17 @@ class Camera extends React.Component{
 
 	takePicture = async function() {
     	if (this.camera) {
-      		const options = { quality: 0.5, base64: true };
-      		const data = await this.camera.takePictureAsync(options).then((data) => {
+          const { dispatch } = this.props;
 
-      		}).catch(err => console.log(err));
-      		console.log(data.uri);
+      		const options = { quality: 0.5, base64: true };
+      		const data = await this.camera.takePictureAsync(options)
+
+          var base64res = data.base64;
+          dispatch(sendPicture(base64res)); 
     	}
  	};
 	
 }
-
 
 
 function mapStateToProps(state) {

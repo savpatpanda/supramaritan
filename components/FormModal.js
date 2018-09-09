@@ -4,28 +4,37 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import SelectButton from './SelectButton';
 import { sendServerDistress } from '../Actions/modal';
 import { ButtonGroup } from 'react-native-elements';
+import { connect } from 'react-redux';
 
 
-export default class FormModal extends React.Component{
+class FormModal extends React.Component{
 	state = {
-		formModalVisible : false,
-		selectedIndex : 2
+		formVisible : false,
+		selectedIndex : 2,
+		picture: null
 	}
-	componentWillReceiveProps(){
-		if(this.props.formModalVisible != this.state.formModalVisible){
-			this.state.formModalVisible = this.props.formModalVisible;
+	componentWillReceiveProps(nextProps){
+		console.log(nextProps)
+		if(nextProps.formVisible && nextProps.formVisible.visible != this.state.formVisible){
+			this.setState({formVisible: nextProps.formVisible.visible});
+		}
+		if(nextProps.picture && !this.state.picture){
+			this.setState({picture:nextProps.picture});
 		}
 	}
 	updateIndex (selectedIndex) {
 	  this.setState({selectedIndex})
 	}
- 	setFormModalVisible(visible) {
-    	this.setState({formModalVisible: visible});
+ 	setFormVisible(visible) {
+ 		const {dispatch} = this.props
+ 		console.log("=============================")
+    	this.setState({formVisible: visible});
+    	dispatch({type: "SET_FORM", visible})
   	}
 
   	sendDistress(){
   		console.log("Bho is a genius")
-		sendServerDistress(this.state.selectedIndex,this.refs.selections,this.props.coordinates);
+		sendServerDistress(this.state.selectedIndex,this.refs.selections,this.props.coordinates, this.state.picture);
 	}
 
 	render(){
@@ -39,9 +48,9 @@ export default class FormModal extends React.Component{
 				<Modal
 		            animationType="slide"
 		            transparent={false}
-		            visible={this.state.formModalVisible}
+		            visible={this.state.formVisible}
 		            onRequestClose={() => {
-		              this.setFormModalVisible(!this.state.formModalVisible);
+		              this.setFormVisible(!this.state.formVisible);
 		            }}>
 		            <View>
 		              <View>
@@ -49,7 +58,7 @@ export default class FormModal extends React.Component{
 		                  <TouchableHighlight
 		                    style = {styles.out}
 		                    onPress={() => {
-		                      this.setFormModalVisible(!this.state.formModalVisible);
+		                      this.setFormVisible(!this.state.formVisible);
 		                    }}>
 		                    <Icon name = "close" style = {styles.closeButton}/>
 		                  </TouchableHighlight>
@@ -80,9 +89,9 @@ export default class FormModal extends React.Component{
 				<Modal
 	            animationType="slide"
 	            transparent={false}
-	            visible={this.state.formModalVisible}
+	            visible={this.state.formVisible}
 	            onRequestClose={() => {
-	              this.setFormModalVisible(!this.state.formModalVisible);
+	              this.setFormVisible(!this.state.formVisible);
 	            }}>
 	            <View>
 	              <View>
@@ -90,7 +99,7 @@ export default class FormModal extends React.Component{
 	                  <TouchableHighlight
 	                    style = {styles.out}
 	                    onPress={() => {
-	                      this.setFormModalVisible(!this.state.formModalVisible);
+	                      this.setFormVisible(!this.state.formVisible);
 	                    }}>
 	                    <Icon name = "close" style = {styles.closeButton}/>
 	                  </TouchableHighlight>
@@ -126,6 +135,15 @@ export default class FormModal extends React.Component{
 	    );
     }
 }
+function mapStateToProps(state) {
+	console.log(state);
+  return {
+    ...state,
+    picture : state.loginReducer.base64,
+    formVisible : state.loginReducer.formVisible
+  }
+}
+export default connect(mapStateToProps)(FormModal);
 
 const styles = StyleSheet.create({
   closeButton: {

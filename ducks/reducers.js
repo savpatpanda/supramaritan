@@ -1,13 +1,26 @@
 import { combineReducers } from 'redux';
 
 export const loginReducer = (state = {user: {}}, action) => {
-    console.log('itemsReducer was called with state', state, 'and action', action)
-
     switch (action.type) {
         case 'GET_INCIDENTS':
             return {
                 ...state,
                 incidents: action.response
+            }
+        case 'PUSH_IMAGE':
+            return {
+                ...state,
+                base64 : action.base64
+            }
+        case 'SET_FORM':
+            return {
+                ...state,
+                formVisible : action
+            }
+        case 'SET_AUTH':
+            return {
+                ...state,
+                authVisible : action
             }
         default:
             return state;
