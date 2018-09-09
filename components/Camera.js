@@ -39,6 +39,11 @@ takePicture = async function() {
     }
  };
 
+function mapStateToProps(state) {
+  return {
+    ...state,
+  }
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
