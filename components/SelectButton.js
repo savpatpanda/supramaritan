@@ -39,7 +39,6 @@ export default class SelectButton extends React.Component {
 
 	render() {
     	return (
-
     		<View>
 	          <View style={styles.row}>
 	          	<View style={styles.column}>
