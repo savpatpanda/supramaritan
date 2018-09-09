@@ -38,7 +38,12 @@ export default class SelectButton extends React.Component {
 
 	render() {
     	return (
-    		<View>
+    		
+    		
+
+    		<View style = {{width: "100%", alignItems: 'center', marginTop: 20}}>
+
+    			<Text style = {{alignSelf: 'flex-start', fontSize: 15, marginLeft: '3%'}}>Which of the following best describes your situation</Text>
 	          <View style={styles.row}>
 	          	<View style={styles.column}>
 		          <TouchableWithoutFeedback 
@@ -51,7 +56,9 @@ export default class SelectButton extends React.Component {
 		          			color: opac1(!this.state.selected1),
 		          			borderWidth: 2,
 		          			borderColor: opac1(!this.state.selected1),
-		          			borderRadius: 4
+		          			borderRadius: 4,
+		          			width: '28%',
+		          			alignSelf: 'center'
 		          		}} />
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Food</Text>
@@ -68,7 +75,11 @@ export default class SelectButton extends React.Component {
 		          			color: opac2(!this.state.selected2),
 		          			borderWidth: 2,
 		          			borderColor: opac2(!this.state.selected2),
-		          			borderRadius: 4
+		          			borderRadius: 4,
+		          			width: '28%',
+		          			alignSelf: 'center',
+		          			paddingLeft: 0.75,
+		          			paddingTop: 2.5,
 		          		}} />
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Injury</Text>
@@ -85,7 +96,9 @@ export default class SelectButton extends React.Component {
 		          			color: opac3(!this.state.selected3),
 		          			borderWidth: 2,
 		          			borderColor: opac3(!this.state.selected3),
-		          			borderRadius: 4
+		          			borderRadius: 4,
+		          			width: '28%',
+		          			alignSelf: 'center'
 		          		}} />
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Fire</Text>
@@ -104,7 +117,11 @@ export default class SelectButton extends React.Component {
 		          			color: opac4(!this.state.selected4),
 		          			borderWidth: 2,
 		          			borderColor: opac4(!this.state.selected4),
-		          			borderRadius: 4
+		          			borderRadius: 4,
+		          			width: '28%',
+		          			alignSelf: 'center',
+		          			paddingLeft: 6.5,
+		          			paddingTop: 3
 		          		}} />
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Flooding</Text>
@@ -120,10 +137,13 @@ export default class SelectButton extends React.Component {
 		          			fontSize: 30, 
 		          			color: opac5(!this.state.selected5),
 		          			borderWidth: 2,
-		          			paddingLeft: 0,
+		          			paddingLeft: 1,
+		          			paddingTop: 2.5,
 		          			width: 35,
 		          			borderColor: opac5(!this.state.selected5),
-		          			borderRadius: 4
+		          			borderRadius: 4,
+		          			width: '28%',
+		          			alignSelf: 'center'
 		          		}} />
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Earthquake</Text>
@@ -133,17 +153,22 @@ export default class SelectButton extends React.Component {
 		          <TouchableWithoutFeedback 
 		          	onPress={() => {this.selectedStatus6(!this.state.selected6)}}
 		          	containerStyle={styles.containerStyle}
-		          	buttonStyle={{backgroundColor: 'white'}}
+		          	buttonStyle={{backgroundColor: 'white', alignItems: 'center'}}
 		          	title = {"asdf"}>
+		          	<View>
 		          		<Icon3 name="food-apple" style={{
 		          			fontSize: 30, 
 		          			color: opac6(!this.state.selected6),
 		          			borderWidth: 2,
 		          			borderColor: opac6(!this.state.selected6),
-		          			borderRadius: 4
-		          		}} />
+		          			borderRadius: 4,
+		          			width: '28%',
+		          			alignSelf: 'center',
+		          			paddingLeft: 7
+		          		}} /><Text style={styles.text}>Other</Text>
+		          	</View>
 		          </TouchableWithoutFeedback>
-		          <Text style={styles.text}>Other</Text>
+		          
 		      	</View>
 	          </View>
 	        </View>
@@ -152,7 +177,7 @@ export default class SelectButton extends React.Component {
 }
 
 function opac1 (asdf){
-	if(asdf){
+	if(!asdf){
 		return '#123'
 	} else{
 		return '#a5aeb7'
@@ -160,7 +185,7 @@ function opac1 (asdf){
 }
 
 function opac2 (asdf){
-	if(asdf){
+	if(!asdf){
 		return '#123'
 	} else{
 		return '#a5aeb7'
@@ -168,7 +193,7 @@ function opac2 (asdf){
 }
 
 function opac3 (asdf){
-	if(asdf){
+	if(!asdf){
 		return '#123'
 	} else{
 		return '#a5aeb7'
@@ -176,7 +201,7 @@ function opac3 (asdf){
 }
 
 function opac4 (asdf){
-	if(asdf){
+	if(!asdf){
 		return '#123'
 	} else{
 		return '#a5aeb7'
@@ -184,7 +209,7 @@ function opac4 (asdf){
 }
 
 function opac5 (asdf){
-	if(asdf){
+	if(!asdf){
 		return '#123'
 	} else{
 		return '#a5aeb7'
@@ -192,7 +217,7 @@ function opac5 (asdf){
 }
 
 function opac6 (asdf){
-	if(asdf){
+	if(!asdf){
 		return '#123'
 	} else{
 		return '#a5aeb7'
@@ -200,9 +225,6 @@ function opac6 (asdf){
 }
 
 const styles = StyleSheet.create({
-	text: {
-		textAlign: 'center'
-	},
 	containerStyle: {
 		height: 20,
 		width: 20,
@@ -210,17 +232,17 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
-	rows:{
-		flex: 1,
+	row:{
+		flex: 0,
+		width: '100%',		
 		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'center'
-	},
-	columns:{
-
-		flexDirection: 'column',
-		alignItems: 'center',
 		justifyContent: 'center',
-		alignItems: 'center'
+		marginTop: 25
+	},
+	text:{
+		alignSelf: 'center'
+	},
+	column:{
+		width: '33%',
 	}
 });

@@ -110,14 +110,14 @@ class Main extends React.Component {
 
 colorChooser(severity){
     if(!this.state.showDot){
-      return {height: 12, width: 10, visibility: 'false', opacity: 0}
+      return {height: 12, width: 10, opacity: 0}
     }else{
     if(severity == 1){
-        return {height: 12, width: 10, visibility: 'true', color: '#efb802'}
+        return {height: 12, width: 10, color: '#efb802'}
       }else if(severity ==2){
-        return {height: 12, width: 10, visibility: 'true', color: '#ef8802'}
+        return {height: 12, width: 10, color: '#ef8802'}
       }else if(severity == 3){
-        return {height: 12, width: 10, visibility: 'true', color: '#ef4102'}
+        return {height: 12, width: 10, color: '#ef4102'}
       }
     }
   }

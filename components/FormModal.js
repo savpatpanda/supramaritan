@@ -73,25 +73,31 @@ class FormModal extends React.Component{
 
 		                <View style = {styles.btngView}>
 		                  <Text style = {styles.pls}>Please rate the severity of your situation</Text>
-		                  <ButtonGroup 
-				          	onPress={this.updateIndex.bind(this)}
-				      		selectedIndex={this.state.selectedIndex}
-				      		buttons={buttons}
-				          	containerStyle={styles.containerStyle}
-				          	buttonStyle={styles.buttonStyle}
-				          	selectedTextStyle={styles.selectedTextStyle}
-				          	selectedButtonStyle={styles.selectedButtonStyle}
-				          	innerBorderStyle={{width: 0, color: 'white'}}
-				          />
+		                  <View style = {{marginTop: 15}}>
+			                  <ButtonGroup 
+					          	onPress={this.updateIndex.bind(this)}
+					      		selectedIndex={this.state.selectedIndex}
+					      		buttons={buttons}
+					          	containerStyle={styles.containerStyle}
+					          	buttonStyle={styles.buttonStyle}
+					          	selectedTextStyle={styles.selectedTextStyle}
+					          	selectedButtonStyle={styles.selectedButtonStyle}
+					          	innerBorderStyle={{width: 0, color: 'white'}}
+				          		/>
+				          </View>
 
 				        </View>
-		                  <SelectButton ref='selections'/>
-		                  <Button 
-			        		style={styles.button}
-			        		title='Submit'
-			        		onPress={this.sendDistress.bind(this)}
-			        	   >
-		        		   </Button>
+		                  <SelectButton style = {styles.selectboi} ref='selections'/>
+		                  <View
+	        		   		style = {styles.submitNest}>
+	        		   		<TouchableOpacity
+	        		   			style = {styles.submitStyle}
+	        		   			onPress={() => {
+	        		   				this.sendDistress();
+	        		   			}}>
+	        		   			<Text style = {styles.innerText}>Submit</Text>
+	        		   		</TouchableOpacity>
+						</View>
 		                
 		              </View>
 		            </View>
@@ -118,6 +124,9 @@ const styles = StyleSheet.create({
     marginTop: '10%',
     marginRight: '5%',
     alignSelf: 'center'
+  },
+  selectboi:{
+  	marginTop: 25
   },
   formTitle:{
   	fontWeight: 'bold'
@@ -147,10 +156,10 @@ const styles = StyleSheet.create({
   },
   submitNest:{
   	width: '100%',
-  	height: '25%',
+  	height: 40,
   	alignItems: 'center',
   	justifyContent: 'space-between',
-  	backgroundColor: '#000'
+  	marginTop: 50
   },
   submitStyle:{
   	width: '95%',
@@ -177,8 +186,8 @@ const styles = StyleSheet.create({
 		borderColor: 'white'
 	},
 	buttonStyle: {
-	    borderWidth: 3,
-	    borderColor: 'black',
+	    borderWidth: 2,
+	    borderColor: '#ccc',
 		backgroundColor: 'white'
 	},
 	selectedTextStyle: {
@@ -186,7 +195,7 @@ const styles = StyleSheet.create({
 		fontWeight: '900'
 	},
 	selectedButtonStyle: {
-		backgroundColor: 'orange'
+		backgroundColor: '#ccc'
 	},
 	modal:{
 		backgroundColor: 'white',
