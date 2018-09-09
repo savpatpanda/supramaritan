@@ -4,6 +4,7 @@ import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import ActionButton from 'react-native-circular-action-menu';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/FontAwesome5';
+import Icon2 from 'react-native-vector-icons/FontAwesome';
 import FormModal from './FormModal';
 import AuthModal from './AuthModal';
 import { createStore, applyMiddleware } from 'redux';
@@ -90,16 +91,6 @@ class Main extends React.Component {
 
   setAuthModalVisible(visible) {
     this.setState({authModalVisible: visible});
-  }
-
-  chooseImage(severity){
-      if(severity ==1){
-        return yellow_circle
-      }else if(severity ==2){
-        return orange_circle
-      }else{
-        return red_circle
-      }
   }
 
   segueToDetailView(index){
@@ -194,10 +185,13 @@ class Main extends React.Component {
                 longitude: marker.coordinates.long}}
               title={"incident"}
               key={marker.key}
-              image ={this.chooseImage(marker.severity)}
               style = {{height: 10, width: 10}}
               onPress={this.segueToDetailView.bind(this, marker.key)}
-            />
+            >
+            <View>
+              <Icon2 name="circle" style={styles.markerPoints}/>
+            </View>
+            </MapView.Marker>
           ))}
 
           {this.state.policeStations.map(policeStation => (
@@ -336,7 +330,11 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     fontSize: 18
-  } 
+  },
+  markerPoints:{
+    width: 10, 
+    height: 12
+  }
 });
 
 /*
