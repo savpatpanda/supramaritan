@@ -6,7 +6,7 @@
 	<dict>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<data>
-		qXsDHH9lNbFWbVkFb41KHN0JsZA=
+		kmRvO1psRRoFo7TAentCBNiXrgg=
 		</data>
 		<key>Entypo.ttf</key>
 		<data>
@@ -781,7 +781,7 @@
 		</data>
 		<key>PlugIns/RetailCalculusTests.xctest.dSYM/Contents/Resources/DWARF/RetailCalculusTests</key>
 		<data>
-		KEhbQfIFdvubgr9FW0/LRCXJGTk=
+		EH+VoPtiGxVd1tKLmSfdUL0wLeo=
 		</data>
 		<key>PlugIns/RetailCalculusTests.xctest/Info.plist</key>
 		<data>
@@ -789,7 +789,7 @@
 		</data>
 		<key>PlugIns/RetailCalculusTests.xctest/RetailCalculusTests</key>
 		<data>
-		ilNpYmGOZuUJyDur+TMvnB0SbTY=
+		hO/Ea+AahrdPAI+Y+CQW3ITqeMc=
 		</data>
 		<key>PlugIns/RetailCalculusTests.xctest/_CodeSignature/CodeResources</key>
 		<data>
@@ -810,11 +810,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			qXsDHH9lNbFWbVkFb41KHN0JsZA=
+			kmRvO1psRRoFo7TAentCBNiXrgg=
 			</data>
 			<key>hash2</key>
 			<data>
-			+/ILfJD5Bm1hPuwR1KRrP2FiebGoC7oG/fQ7rkvdWyU=
+			gmabEZtl9iBQW3FDUym+zjdFwMokW4DP9bRMNUQ+KB4=
 			</data>
 		</dict>
 		<key>Entypo.ttf</key>
@@ -2367,11 +2367,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			KEhbQfIFdvubgr9FW0/LRCXJGTk=
+			EH+VoPtiGxVd1tKLmSfdUL0wLeo=
 			</data>
 			<key>hash2</key>
 			<data>
-			DZqOQSfaCXGlrWPrtAveY0LcsV50aivSu4NcpuLuaMw=
+			ZU/C7jxO/MrG8jLqr6+nu2gpFUkvmsDBIoGRZgbht8E=
 			</data>
 		</dict>
 		<key>PlugIns/RetailCalculusTests.xctest/Info.plist</key>
@@ -2389,11 +2389,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ilNpYmGOZuUJyDur+TMvnB0SbTY=
+			hO/Ea+AahrdPAI+Y+CQW3ITqeMc=
 			</data>
 			<key>hash2</key>
 			<data>
-			1C89GW04sIEnx9zdXSxIVirj952G4OIvfvjAkub9FD4=
+			VS+CyciVu/zsh29T9eNraFnmkS1anmL9XjtYK6s6Tgg=
 			</data>
 		</dict>
 		<key>PlugIns/RetailCalculusTests.xctest/_CodeSignature/CodeResources</key>
