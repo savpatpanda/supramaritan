@@ -4,7 +4,10 @@ export function sendServerDistress(severity, selections,currentCoordinates,image
 			"description": {
 				"food": selections.state.selected,
 				"injury": selections.state.selected2,
-				"other": selections.state.selected3
+				"fire": selections.state.selected3,
+				"flooding": selections.state.selected4,
+				"earthquake": selections.state.selected5,
+				"other": selections.state.selected6
 			},
 			"image" : image,
 			"coordinates": currentCoordinates,
