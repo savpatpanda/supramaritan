@@ -17,13 +17,18 @@ class AuthModal extends React.Component{
 		var low = [];
 		var medium = [];
 		var high = [];
+		var selfList = [];
 		for(var i = 0; i<list.length; i++){
-			if(list[i].currentPriority == 1){
-				low.push(list[i])
-			}else if(list[i].currentPriority == 2){
-				medium.push(list[i])
+			if(list[i].user === "4b238ba168081e9b04c952ff"){
+				selfList.push(list[i]);
 			}else{
-				high.push(list[i])
+				if(list[i].currentPriority == 1){
+					low.push(list[i])
+				}else if(list[i].currentPriority == 2){
+					medium.push(list[i])
+				}else{
+					high.push(list[i])
+				}
 			}
 		}
 		low.sort(function(a,b){
@@ -54,18 +59,25 @@ class AuthModal extends React.Component{
 			}
 		})
 		this.setState({dataSource: high.concat(medium, low)})
-		this.setState({mySource: this.findMySignals(this.state.dataSource,'5b930ba168081e9b04c952ff')}) //come back to and send the file the userID
+		this.setState({mySource : selfList});
+		console.log(selfList);
 	}
 
 	findMySignals(whole, userID){
+		console.log("savan is a FATTY")
 		var output = [];
+		console.log(whole)
 		for(var i = 0; i < whole.length; i++){
-			if(whole[i].user.type==userID){
+			
+			if(whole[i].user == userID){
+				
 				output.push(whole[i])
 				whole.slice(i,i+1)
-				i--
+				i-- 
 			}
 		}
+
+		console.log(output)
 		return output;
 	}
 
@@ -124,13 +136,14 @@ class AuthModal extends React.Component{
 
 	render(){
 
-
+/*
 		let swipeBtns = [{
 		      text: 'Delete',
 		      backgroundColor: 'red',
 		      underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
 		      onPress: () => { this.deleteNote(rowData) }
 		}];
+		*/
 		return(
 				<Modal
 		            animationType="slide"
@@ -155,9 +168,10 @@ class AuthModal extends React.Component{
 		                <ScrollView>
 		                  {this.state.mySource.map(item => (
 			                  
+			                  /*
 			                  <Swipeout right={swipeBtns}
 			                  	autoClose='true'
-								backgroundColor= 'transparent'>
+								backgroundColor= 'transparent'>*/
 			                  <TouchableHighlight
 						        style={{
 						        	padding: 10,
@@ -176,7 +190,7 @@ class AuthModal extends React.Component{
                      			</Text>
                      			</View>
 							  </TouchableHighlight>
-							  </Swipeout>
+							  //</Swipeout>
 						  ))
 		                  }
 		                </ScrollView>
