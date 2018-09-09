@@ -6,28 +6,41 @@ import { sendServerDistress } from '../Actions/modal';
 import { ButtonGroup } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation';
 import Navigator from './Navigator';
+import { connect } from 'react-redux';
 
 
-export default class FormModal extends React.Component{
+class FormModal extends React.Component{
 	state = {
 		formModalVisible : false,
-		selectedIndex : 2
+		selectedIndex : 2,
+		picture: null
 	}
-	componentWillReceiveProps(){
-		if(this.props.formModalVisible != this.state.formModalVisible){
-			this.state.formModalVisible = this.props.formModalVisible;
+	constructor(props){
+		super(props);
+		console.log(props);
+		this.setState({formModalVisible:props.formModalVisible});
+	}
+	componentWillReceiveProps(nextProps){
+		if(nextProps.formModalVisible != this.state.formModalVisible){
+			this.setState({formModalVisible:nextProps.formModalVisible});
+		}
+		if(nextProps.picture && !this.state.picture){
+			this.setState({picture:nextProps.picture});
 		}
 	}
 	updateIndex (selectedIndex) {
 	  this.setState({selectedIndex})
 	}
  	setFormModalVisible(visible) {
+ 		const {dispatch} = this.props
+ 		console.log("=============================")
     	this.setState({formModalVisible: visible});
+    	dispatch({type: "SET_FORM", visible})
   	}
 
   	sendDistress(){
   		console.log("Bho is a genius")
-		sendServerDistress(this.state.selectedIndex,this.refs.selections,this.props.coordinates);
+		sendServerDistress(this.state.selectedIndex,this.refs.selections,this.props.coordinates, this.state.picture);
 	}
 
 	render(){
@@ -128,6 +141,14 @@ export default class FormModal extends React.Component{
 	    );
     }
 }
+function mapStateToProps(state) {
+	console.log(state);
+  return {
+    ...state,
+    picture : state.loginReducer.base64
+  }
+}
+export default connect(mapStateToProps)(FormModal);
 
 const styles = StyleSheet.create({
   closeButton: {

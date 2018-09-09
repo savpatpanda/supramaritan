@@ -1,10 +1,10 @@
 export const GET_INCIDENTS = 'GET_INCIDENTS'
+export const PUSH_IMAGE = 'PUSH_IMAGE';
 
 export function getIncidents(coordinates){
 	var bod = JSON.stringify({
 		"coordinates" : {...coordinates, lat : coordinates.latitude, long : coordinates.longitude}
 	});
-	console.log(bod);
 	return (dispatch) => {
 		console.log('in dispatch')
 		fetch("https://abhyanfood.herokuapp.com/range", {
@@ -26,5 +26,14 @@ export function getIncidents(coordinates){
 		.catch((error) => {
 			console.log(error);
 		});
+	}
+}
+
+export function sendPicture(base64img){
+	return (dispatch) => {
+		dispatch({
+			type: PUSH_IMAGE,
+			base64img
+		})
 	}
 }

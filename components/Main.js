@@ -37,7 +37,6 @@ class Main extends React.Component {
 
   componentWillReceiveProps(nextProps){
     if(nextProps.incidents && nextProps.incidents != this.state.incidents){
-      console.log(nextProps.incidents);
       var z = [];
       var num = 0;
       nextProps.incidents.incidents.forEach((incident) => {
@@ -45,6 +44,10 @@ class Main extends React.Component {
         num += 1;
       });
       this.setState({incidents: z});
+    }
+    if(nextProps.formVisible && nextProps.formVisible.visible != this.state.formVisible){
+      console.log("CURRENT FORM STATE:" + nextProps.formVisible.visible)
+      this.setState({formVisible : nextProps.formVisible.visible});
     }
   }
 
@@ -77,10 +80,7 @@ class Main extends React.Component {
     );
 
   }
-  
-  setFormModalVisible(visible) {
-    this.setState({formModalVisible: visible});
-  }
+
 
   setAuthModalVisible(visible) {
     this.setState({authModalVisible: visible});
@@ -94,7 +94,6 @@ class Main extends React.Component {
     this.setState({showHeatmap: !this.state.showHeatmap});
   }
   render() {
-    console.log(this.state.incidents);
     return (
       <TouchableWithoutFeedback onLongPress={this.onLongPress.bind(this)}>
         <View style={styles.container}>
@@ -233,7 +232,7 @@ class Main extends React.Component {
         </MapView>
 
         <ActionButton buttonColor="rgba(231,76,60,1)">
-          <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={() => {this.setFormModalVisible(true)}}>
+          <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={() => {this.setState({formModalVisible:true})}}>
             <Icon name="md-document" style={styles.actionButtonIcon} />
           </ActionButton.Item>
           <ActionButton.Item buttonColor='#3498db' title="Notifications" onPress={() => {this.setAuthModalVisible(true)}}>
@@ -247,7 +246,6 @@ class Main extends React.Component {
         />
 
         <AuthModal
-          currentCoordinates={this.state.currentCoordinates}
           authModalVisible={this.state.authModalVisible}
         />
 
@@ -262,12 +260,12 @@ class Main extends React.Component {
 
 function mapStateToProps(state) {
 
-  console.log(state.loginReducer)
   return {
     ...state,
-    incidents : state.loginReducer.incidents
+    picture : state.loginReducer.base64,
+    incidents : state.loginReducer.incidents,
+    formVisible : state.loginReducer.formVisible
   }
-  return state;
 }
 const styles = StyleSheet.create({
   container: {

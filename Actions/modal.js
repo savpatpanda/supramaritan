@@ -1,7 +1,4 @@
-export function sendServerDistress(severity, selections,currentCoordinates){
-	console.log('callingDistress');
-	console.log(currentCoordinates)
-	console.log(JSON.stringify(currentCoordinates));
+export function sendServerDistress(severity, selections,currentCoordinates,image){
 	var bod = JSON.stringify({
 			"user": '5b930ba168081e9b04c952ff',
 			"description": {
@@ -9,10 +6,10 @@ export function sendServerDistress(severity, selections,currentCoordinates){
 				"injury": selections.state.selected2,
 				"other": selections.state.selected3
 			},
+			"image" : image,
 			"coordinates": currentCoordinates,
 			"currentPriority": severity,
 		});
-	console.log(bod)
 	fetch('https://abhyanfood.herokuapp.com/storedUsers',{
 		method: 'POST',
 		headers: {
@@ -28,7 +25,6 @@ export function sendServerDistress(severity, selections,currentCoordinates){
 
 export function getListofSignals(currentCoordinates){
 
-	console.log(currentCoordinates)
 	var bod = JSON.stringify({
 			"coordinates": currentCoordinates
 	});
@@ -61,8 +57,9 @@ export function getListofSignals(currentCoordinates){
 
 export function collectPoints(longitude, latitude, type){
 
-	return fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=${type}&key=AIzaSyBXneZ3bJ_NNCgtec5UD8V8664aGQ1EWNA`,{
-	}).then(function(response) { console.log(response); return response.json(); })
+	return fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=1000&type=${type}&key=AIzaSyBXneZ3bJ_NNCgtec5UD8V8664aGQ1EWNA`,{
+	}).then(function(response) { return response.json(); })
+
 	.then(function(data){
 		var end = [];
 		for(var i = 0; i < data.results.length; i++) {
