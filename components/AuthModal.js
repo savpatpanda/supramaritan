@@ -54,7 +54,7 @@ class AuthModal extends React.Component{
 			}
 		})
 		this.setState({dataSource: high.concat(medium, low)})
-		this.setState({mySource: findMySignals(dataSource,'5b930ba168081e9b04c952ff')}) //come back to and send the file the userID
+		this.setState({mySource: this.findMySignals(this.state.dataSource,'5b930ba168081e9b04c952ff')}) //come back to and send the file the userID
 	}
 
 	findMySignals(whole, userID){
@@ -123,6 +123,14 @@ class AuthModal extends React.Component{
   	}
 
 	render(){
+
+
+		let swipeBtns = [{
+		      text: 'Delete',
+		      backgroundColor: 'red',
+		      underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
+		      onPress: () => { this.deleteNote(rowData) }
+		}];
 		return(
 				<Modal
 		            animationType="slide"
@@ -147,12 +155,9 @@ class AuthModal extends React.Component{
 		                <ScrollView>
 		                  {this.state.mySource.map(item => (
 			                  
-			                  <Swipeout right={
-			                  	  text: 'Delete',
-							      backgroundColor: 'red',
-							      underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
-							      onPress: () => { this.deleteNote(rowData) 
-			                  }
+			                  <Swipeout right={swipeBtns}
+			                  	autoClose='true'
+								backgroundColor= 'transparent'>
 			                  <TouchableHighlight
 						        style={{
 						        	padding: 10,
@@ -171,6 +176,7 @@ class AuthModal extends React.Component{
                      			</Text>
                      			</View>
 							  </TouchableHighlight>
+							  </Swipeout>
 						  ))
 		                  }
 		                </ScrollView>
