@@ -12,6 +12,7 @@ import {collectPoints} from '../Actions/modal';
 import police from '../Images/police.png';
 import hospitalImage from '../Images/hospital.png';
 import { getIncidents } from '../Actions/main'
+import NavigationService from '../NavigationService';
 import io from 'socket.io-client'
 const socket = io('https://abhyanfood.herokuapp.com/');
 
@@ -90,6 +91,8 @@ class Main extends React.Component {
   segueToDetailView(index){
     console.log(`${index} pressed`);
     console.log(this.state.incidents[index]);
+    NavigationService.navigate('Detail', this.state.incidents[index]);
+
   }
   onLongPress(){
     this.setState({showHeatmap: !this.state.showHeatmap});
