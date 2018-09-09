@@ -221,8 +221,6 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		alignItems: 'center',
 		justifyContent: 'center',
-
-		flex: 1,
 		alignItems: 'center'
 	}
 });
