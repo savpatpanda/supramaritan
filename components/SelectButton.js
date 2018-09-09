@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon1 from 'react-native-vector-icons/SimpleLineIcons';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/FontAwesome5';
+import { Col, Row, Grid } from 'react-native-easy-grid';
 
 export default class SelectButton extends React.Component {
 
@@ -38,6 +39,7 @@ export default class SelectButton extends React.Component {
 
 	render() {
     	return (
+
     		<View style={styles.column}>
 	          <View style={styles.row}>
 	          	<View style={styles.column}>
@@ -56,6 +58,7 @@ export default class SelectButton extends React.Component {
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Food</Text>
 		      	</View>
+
 		      	<View style={styles.column}>
 		          <TouchableWithoutFeedback 
 		          	onPress={() => {this.selectedStatus2(!this.state.selected2)}}
@@ -72,6 +75,7 @@ export default class SelectButton extends React.Component {
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Injury</Text>
 		      	</View>
+
 		      	<View style={styles.column}>
 		          <TouchableWithoutFeedback 
 		          	onPress={() => {this.selectedStatus3(!this.state.selected3)}}
@@ -89,6 +93,7 @@ export default class SelectButton extends React.Component {
 		          <Text style={styles.text}>Fire</Text>
 		      	</View>
 		      </View>
+
 			  <View style={styles.row}>
 		        <View style={styles.column}>
 		          <TouchableWithoutFeedback 
@@ -106,6 +111,7 @@ export default class SelectButton extends React.Component {
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Flooding</Text>
 		      	</View>
+
 		      	<View style={styles.column}>
 		          <TouchableWithoutFeedback 
 		          	onPress={() => {this.selectedStatus5(!this.state.selected5)}}
@@ -116,12 +122,15 @@ export default class SelectButton extends React.Component {
 		          			fontSize: 30, 
 		          			color: opac5(!this.state.selected5),
 		          			borderWidth: 2,
+		          			paddingLeft: 0,
+		          			width: 35,
 		          			borderColor: opac5(!this.state.selected5),
 		          			borderRadius: 4
 		          		}} />
 		          </TouchableWithoutFeedback>
 		          <Text style={styles.text}>Earthquake</Text>
 		      	</View>
+
 		      	<View style={styles.column}>
 		          <TouchableWithoutFeedback 
 		          	onPress={() => {this.selectedStatus6(!this.state.selected6)}}
@@ -204,10 +213,18 @@ const styles = StyleSheet.create({
 		justifyContent: 'center'
 	},
 	rows:{
+		flex: 1,
 		flexDirection: 'row',
-		alignItems: 'center'
+		alignItems: 'center',
+		justifyContent: 'center'
 	},
 	columns:{
+
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'center',
+
+		flex: 1,
 		alignItems: 'center'
 	}
 });

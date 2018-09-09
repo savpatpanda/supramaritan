@@ -6,6 +6,8 @@ import { sendServerDistress } from '../Actions/modal';
 import { ButtonGroup } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
+import NavigationService from '../NavigationService';
+//import Camera from './Camera';
 
 
 class FormModal extends React.Component{
@@ -37,6 +39,7 @@ class FormModal extends React.Component{
   		console.log("Bho is a genius")
 		sendServerDistress(this.state.selectedIndex,this.refs.selections,this.props.coordinates, this.state.picture);
 	}
+
 
 	render(){
 		const component1 = () => <Text>1</Text>
@@ -100,6 +103,8 @@ function mapStateToProps(state) {
   }
 }
 export default connect(mapStateToProps)(FormModal);
+
+
 
 const styles = StyleSheet.create({
   closeButton: {

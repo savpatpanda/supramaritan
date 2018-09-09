@@ -39,6 +39,8 @@ target 'RetailCalculus' do
   pod 'Google-Maps-iOS-Utils', :git => 'https://github.com/pjamrozowicz/google-maps-ios-utils.git'
   pod 'react-native-camera', :path => '../node_modules/react-native-camera'
 
+  pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
+
 end
 
 post_install do |installer|

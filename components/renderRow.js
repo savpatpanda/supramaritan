@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 const Row = (props) => (
   <View style={styles.container}>
     <Text style={styles.text}>
-      {`${props.currentPriorty}`}
+      {`${props.currentPriority}`}
     </Text>
   </View>
 );
