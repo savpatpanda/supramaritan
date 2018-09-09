@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import SelectButton from './SelectButton';
 import { sendServerDistress } from '../Actions/modal';
 import { ButtonGroup } from 'react-native-elements';
+import { createStackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 
 
