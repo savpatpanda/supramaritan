@@ -102,6 +102,17 @@ class Main extends React.Component {
   onLongPress(){
     this.setState({showHeatmap: !this.state.showHeatmap});
   }
+
+  colorChooser(severity){
+    if(severity ==1){
+        return '#efb802'
+      }else if(severity ==2){
+        return '#ef8802'
+      }else{
+        return '#ef4102'
+      }
+  }
+
   render() {
     return (
       <TouchableWithoutFeedback onLongPress={this.onLongPress.bind(this)}>
@@ -189,7 +200,11 @@ class Main extends React.Component {
               onPress={this.segueToDetailView.bind(this, marker.key)}
             >
             <View>
-              <Icon2 name="circle" style={styles.markerPoints}/>
+              <Icon2 name="circle" style={{
+                width: 10,
+                height: 12,
+                color: colorChooser(marker.currentPriority)
+              }}/>
             </View>
             </MapView.Marker>
           ))}
@@ -330,15 +345,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     fontSize: 18
-  },
-  markerPoints:{
-    width: 10, 
-    height: 12
   }
 });
 
-/*
-
-
-        */
 export default connect(mapStateToProps)(Main);
