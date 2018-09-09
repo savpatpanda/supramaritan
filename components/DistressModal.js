@@ -1,21 +1,40 @@
 import React from 'react';
-import { StyleSheet, Text, View, Modal, TouchableHighlight, Button, TouchableOpacity } from 'react-native';
+import { Animated, StyleSheet, Text, View, Modal, TouchableHighlight, Button, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
+import AnimateNumber from 'react-native-animate-number'
 
 class DistressModal extends React.Component{
 	state = {
-		distressVisible : false
+		distressVisible : false,
+		slideAnim: new Animated.Value(-100),
+		incidents: {
+			severityFactor:0,
+			incidents:[],
+			highest : {
+				most : ""
+			}
+		}
 	}
 	componentWillReceiveProps(nextProps){
 		console.log(nextProps)
 		if(nextProps.distressVisible && nextProps.distressVisible.visible != this.state.distressVisible){
 			this.setState({distressVisible: nextProps.distressVisible.visible});
 		}
+		if(nextProps.incidents && nextProps.incidents !== this.state.incidents){
+			this.setState({incidents: nextProps.incidents});
+			console.log('we have incidents')
+		}
 	}
-	componentWillMount(){
-		
-	}
+	componentDidMount(){
+		Animated.timing(                  // Animate over time
+      	this.state.slideAnim,            // The animated value to drive
+     	{
+        	toValue: 0,                   // Animate to opacity: 1 (opaque)
+        	duration: 5000,              // Make it take a while
+      	}
+    	).start();                        // Starts the animation
+  }
  	setDistressVisible(visible) {
  		const {dispatch} = this.props
  		console.log("=============================")
@@ -24,40 +43,7 @@ class DistressModal extends React.Component{
   	}
 
 	render(){
-		let data = [{
-		    "speed": 74,
-		    "balance": 29,
-		    "explosives": 40,
-		    "energy": 40,
-		    "flexibility": 30,
-		    "agility": 25,
-		    "endurance": 44
-		  }]
-
-		  let options = {
-		    width: 290,
-		    height: 290,
-		    margin: {
-		      top: 20,
-		      left: 20,
-		      right: 30,
-		      bottom: 20
-		    },
-		    r: 150,
-		    max: 100,
-		    fill: "#2980B9",
-		    stroke: "#2980B9",
-		    animate: {
-		      type: 'oneByOne',
-		      duration: 200
-		    },
-		    label: {
-		      fontFamily: 'Arial',
-		      fontSize: 14,
-		      fontWeight: true,
-		      fill: '#34495E'
-		    }
-		  }
+		let { slideAnim } = this.state;
 		return(
 			<View>
 				<Modal
@@ -81,6 +67,22 @@ class DistressModal extends React.Component{
 		                	<Text style={styles.title}>Distress Factor for Local Region</Text>
 		                	<Text style={styles.explanation}>The following number (on a scale from 1 to 10) provides information about the danger of your local area.</Text>
 		                	<View style={styles.triangle}>
+		                	<Animated.View                 // Special animatable View
+						        style={{
+						          transform: [
+						              {
+						                translateX: slideAnim
+						              }
+						            ]        // Bind opacity to animated value
+						        }}
+						      >
+						       <AnimateNumber style={styles.severity} countBy={1} value={this.state.incidents.severityFactor}/>
+						       <Text style={styles.severityText}> Severity Level </Text>
+						       <AnimateNumber style={styles.severity} countBy={1} value={this.state.incidents.incidents.length}/>
+						       <Text style={styles.severityText}> Total Incident Count </Text>
+						       <Text style={styles.severityShort}> {this.state.incidents.highest.most} </Text>
+						       <Text style={styles.severityText}> Incident Type ({this.state.incidents.highest.amount} times)</Text>
+						      </Animated.View>
 
 		                	</View>
 		                </View>
@@ -94,12 +96,27 @@ function mapStateToProps(state) {
 	console.log(state);
   return {
     ...state,
-    distressVisible : state.loginReducer.distressVisible
+    distressVisible : state.loginReducer.distressVisible,
+    incidents : state.loginReducer.incidents
   }
 }
 export default connect(mapStateToProps)(DistressModal);
 
 const styles = StyleSheet.create({
+	severity:{
+		fontSize: 120,
+		fontWeight:'900',
+	},
+	severityText:{
+		marginTop:-15,
+		fontSize:30,
+		fontWeight:'200',
+		left:12
+	},
+	severityShort:{
+		fontWeight:'900',
+		fontSize:80
+	},
   closeButton: {
     fontSize: 20,
     marginTop: '10%',
@@ -119,7 +136,11 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: 'bold',
-    fontSize: 18
+    fontSize: 18,
+    alignItems: 'center'
+  },
+  explanation:{
+  	alignItems: 'center'
   },
   submitNest:{
   	width: '100%',
