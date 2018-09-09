@@ -66,8 +66,13 @@ class FormModal extends React.Component{
 		                    <Icon name = "close" style = {styles.closeButton}/>
 		                  </TouchableHighlight>
 		                </View>
+
 		                <View style = {styles.formView}>
 		                  <Text style={styles.title}>Distress Signal</Text>
+		                </View>
+
+		                <View style = {styles.btngView}>
+		                  <Text style = {styles.pls}>Please rate the severity of your situation</Text>
 		                  <ButtonGroup 
 				          	onPress={this.updateIndex.bind(this)}
 				      		selectedIndex={this.state.selectedIndex}
@@ -78,6 +83,8 @@ class FormModal extends React.Component{
 				          	selectedButtonStyle={styles.selectedButtonStyle}
 				          	innerBorderStyle={{width: 0, color: 'white'}}
 				          />
+
+				        </View>
 		                  <SelectButton ref='selections'/>
 		                  <Button 
 			        		style={styles.button}
@@ -85,7 +92,7 @@ class FormModal extends React.Component{
 			        		onPress={this.sendDistress.bind(this)}
 			        	   >
 		        		   </Button>
-		                </View>
+		                
 		              </View>
 		            </View>
 		        </Modal>	
@@ -112,6 +119,14 @@ const styles = StyleSheet.create({
     marginRight: '5%',
     alignSelf: 'center'
   },
+  formTitle:{
+  	fontWeight: 'bold'
+  },
+  pls:{
+  	marginLeft: '3%',
+  	marginTop: 25,
+  	fontSize: 15
+  },
   out: {
     flex: 0,
     width: '15%',
@@ -119,13 +134,16 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     backgroundColor: '#fff'
   },
+  btngView:{
+  	width: '100%'
+  },
   formView: {
-    alignItems: 'center',
-    marginTop: '5%'
+    marginTop: '0%',
   },
   title: {
     fontWeight: 'bold',
-    fontSize: 18
+    fontSize: 27.5,
+    marginLeft: '3%',
   },
   submitNest:{
   	width: '100%',
