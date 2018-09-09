@@ -28,16 +28,20 @@ class Camera extends React.Component{
       		</View>
 			)
 	}
+
+	takePicture = async function() {
+    	if (this.camera) {
+      		const options = { quality: 0.5, base64: true };
+      		const data = await this.camera.takePictureAsync(options).then((data) => {
+
+      		}).catch(err => console.log(err));
+      		console.log(data.uri);
+    	}
+ 	};
 	
 }
 
-takePicture = async function() {
-    if (this.camera) {
-      const options = { quality: 0.5, base64: true };
-      const data = await this.camera.takePictureAsync(options)
-      console.log(data.uri);
-    }
- };
+
 
 function mapStateToProps(state) {
   return {

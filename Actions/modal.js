@@ -10,7 +10,7 @@ export function sendServerDistress(severity, selections,currentCoordinates){
 				"other": selections.state.selected3
 			},
 			"coordinates": currentCoordinates,
-			"currentPriority": severity
+			"currentPriority": severity,
 		});
 	console.log(bod)
 	fetch('https://abhyanfood.herokuapp.com/storedUsers',{
@@ -21,12 +21,14 @@ export function sendServerDistress(severity, selections,currentCoordinates){
 		},
 		body: bod
 	}).then((response) => console.log(response))
-	.catch((error) =>{
+	.catch((error) => {
 		console.error(error);
 	});
 }
 
 export function getListofSignals(currentCoordinates){
+
+	console.log(currentCoordinates)
 	var bod = JSON.stringify({
 			"coordinates": currentCoordinates
 	});
@@ -42,8 +44,13 @@ export function getListofSignals(currentCoordinates){
 		var end = [];
 		for(var i=0; i<data.length; i++){
 			var distanceToUser = Math.sqrt(Math.pow(i.incident.coordinates.lat-currentCoordinates.lat,2)-Math.pow(i.incident.coordinates.long-currentCoordinates.long,2))
-			var incident = {coordinates:i.incident.coordinates, description:i.incident.description, distance:distanceToUser, time:i.incident.time}
-			end.push(incident)
+			var incidents = {
+				coordinates:i.incident.coordinates, 
+				description:i.incident.description, 
+				distance:distanceToUser, 
+				time:i.incident.time,
+				severity:i.incident.currentPriority}
+			end.push(incidents)
 		}
 		return end;
 	})
