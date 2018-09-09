@@ -96,7 +96,7 @@ class AuthModal extends React.Component{
   			output += 'Earthquake, '
   		}
   		if(description.other){
-  			output += 'Other'
+  			output += 'Other, '
   		}
   		if(output.substring(output.length-1,output.length)==', '){
   			output = output.substring(0,output.length-1)
