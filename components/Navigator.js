@@ -12,4 +12,8 @@ const Navigator = createStackNavigator({
 	initialRouteName: 'FormModal'
 });
 
-export default Navigator;
+export default class Navigate extends React.Component {
+  render() {
+    return <RootStack />;
+  }
+}

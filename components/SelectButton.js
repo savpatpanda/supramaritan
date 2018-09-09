@@ -116,6 +116,8 @@ export default class SelectButton extends React.Component {
 		          			fontSize: 30, 
 		          			color: opac5(!this.state.selected5),
 		          			borderWidth: 2,
+		          			paddingLeft: 0,
+		          			width: 35,
 		          			borderColor: opac5(!this.state.selected5),
 		          			borderRadius: 4
 		          		}} />
@@ -204,13 +206,13 @@ const styles = StyleSheet.create({
 		justifyContent: 'center'
 	},
 	rows:{
-		flex: 1,
 		flexDirection: 'row',
-		alignItems: 'center'
+		alignItems: 'center',
+		justifyContent: 'center'
 	},
 	columns:{
-		flex: 1,
 		flexDirection: 'column',
-		alignItems: 'center'
+		alignItems: 'center',
+		justifyContent: 'center'
 	}
 });
