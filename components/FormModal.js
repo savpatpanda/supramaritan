@@ -51,6 +51,7 @@ class FormModal extends React.Component{
 				<View>
 				<Modal
 					visible = {this.state.formVisible}
+					animationType = "slide"
 					onRequestClose={() => {
 		              this.setFormVisible(!this.state.formVisible);
 		            }}>
@@ -145,7 +146,7 @@ const styles = StyleSheet.create({
   	color: '#fff',
   	fontWeight: 'bold',
   	fontSize: 20
-},
+	},
    total: {
    		marginTop: 30,
    		marginRight: 30,
@@ -171,7 +172,9 @@ const styles = StyleSheet.create({
 	},
 	modal:{
 		backgroundColor: 'white',
-    margin: 10,
-    justifyContent: undefined,
+    	marginLeft: 10,
+    	marginRight: 10,
+    	justifyContent: undefined
+
 	}
 });
