@@ -50,11 +50,8 @@ class FormModal extends React.Component{
 		return(
 				<View>
 				<Modal
-		            animationType="slide"
-		            transparent={false}
-		            visible={this.state.formVisible}
-		            presentationStyle='popover'
-		            onRequestClose={() => {
+					visible: {this.state.formVisible}
+					onRequestClose={() => {
 		              this.setFormVisible(!this.state.formVisible);
 		            }}>
 		            <View>
@@ -171,5 +168,12 @@ const styles = StyleSheet.create({
 	},
 	selectedButtonStyle: {
 		backgroundColor: 'orange'
+	},
+	modal:{
+		backgroundColor: 'white',
+    margin: 10,
+    justifyContent: undefined,
+    animationType: "slide",
+	transparent : false
 	}
 });
