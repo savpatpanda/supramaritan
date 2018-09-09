@@ -204,7 +204,7 @@ class Main extends React.Component {
               <Icon2 name="circle" style={{
                 width: 10,
                 height: 12,
-                color: colorChooser(marker.currentPriority)
+                color: this.colorChooser(marker.currentPriority)
               }}/>
             </View>
             </MapView.Marker>
