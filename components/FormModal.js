@@ -87,51 +87,6 @@ class FormModal extends React.Component{
 		              </View>
 		            </View>
 		        </Modal>	
-				<Modal
-	            animationType="slide"
-	            transparent={false}
-	            visible={this.state.formVisible}
-	            onRequestClose={() => {
-	              this.setFormVisible(!this.state.formVisible);
-	            }}>
-	            <View>
-	              <View>
-	                <View>
-	                  <TouchableHighlight
-	                    style = {styles.out}
-	                    onPress={() => {
-	                      this.setFormVisible(!this.state.formVisible);
-	                    }}>
-	                    <Icon name = "close" style = {styles.closeButton}/>
-	                  </TouchableHighlight>
-	                </View>
-	                <View style = {styles.formView}>
-	                  <Text style={styles.title}>Distress Signal</Text>
-	                  <ButtonGroup 
-			          	onPress={this.updateIndex.bind(this)}
-			      		selectedIndex={this.state.selectedIndex}
-			      		buttons={buttons}
-			          	containerStyle={styles.containerStyle}
-			          	buttonStyle={styles.buttonStyle}
-			          	selectedTextStyle={styles.selectedTextStyle}
-			          	selectedButtonStyle={styles.selectedButtonStyle}
-			          	innerBorderStyle={{width: 0, color: 'white'}}
-			          />
-	                  <SelectButton ref='selections'/>
-	                  	<View
-	        		   	 style = {styles.submitNest}>
-	        		   		<TouchableOpacity
-	        		   		style = {styles.submitStyle}
-	        		   		onPress={() => {
-	        		   			this.sendDistress();
-	        		   		}}>
-	        		   		<Text style = {styles.innerText}>Submit</Text>
-	        		   		</TouchableOpacity>
-						</View>
-	                </View>
-	              </View>
-	            </View>
-	        </Modal>
 	        </View>
 	    );
     }

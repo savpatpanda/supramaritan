@@ -204,12 +204,10 @@ const styles = StyleSheet.create({
 		justifyContent: 'center'
 	},
 	rows:{
-		flex: 1,
 		flexDirection: 'row',
 		alignItems: 'center'
 	},
 	columns:{
-		flex: 1,
 		alignItems: 'center'
 	}
 });
