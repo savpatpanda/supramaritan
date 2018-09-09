@@ -6,6 +6,7 @@ import { sendServerDistress } from '../Actions/modal';
 import { ButtonGroup } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
+import Camera from './Camera';
 
 
 class FormModal extends React.Component{
@@ -145,6 +146,14 @@ function mapStateToProps(state) {
   }
 }
 export default connect(mapStateToProps)(FormModal);
+
+const Navigator = createStackNavigator({
+  Form: FormModal,
+  Camera: Camera
+},
+{
+	initialRouteName: 'FormModal'
+});
 
 const styles = StyleSheet.create({
   closeButton: {
