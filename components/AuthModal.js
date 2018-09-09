@@ -149,13 +149,10 @@ class AuthModal extends React.Component{
     }
 }
 function mapStateToProps(state) {
-
-  console.log(state.loginReducer)
   return {
     ...state,
     incidents : state.loginReducer.incidents
   }
-  return state;
 }
 const styles = StyleSheet.create({
   closeButton: {
