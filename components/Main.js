@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/FontAwesome5';
 import FormModal from './FormModal';
 import AuthModal from './AuthModal';
+import DistressModal from './DistressModal';
 import { createStore, applyMiddleware } from 'redux';
 import { connect } from 'react-redux';
 import {collectPoints} from '../Actions/modal';
@@ -254,6 +255,8 @@ class Main extends React.Component {
         <AuthModal
           authModalVisible={this.state.authModalVisible}
         />
+
+        <DistressModal />
 
 
       </View>
