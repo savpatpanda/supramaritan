@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon1 from 'react-native-vector-icons/SimpleLineIcons';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/FontAwesome5';
-import { Col, Row, Grid } from 'react-native-easy-grid';
 
 export default class SelectButton extends React.Component {
 
@@ -15,7 +14,7 @@ export default class SelectButton extends React.Component {
 	    selected3: false,
 	    selected4: false,
 	    selected5: false,
-	    selected6: false
+	    selected6: false,
 	}
 
 	selectedStatus1(status) {
@@ -39,8 +38,7 @@ export default class SelectButton extends React.Component {
 
 	render() {
     	return (
-
-    		<View style={styles.column}>
+    		<View>
 	          <View style={styles.row}>
 	          	<View style={styles.column}>
 		          <TouchableWithoutFeedback 
