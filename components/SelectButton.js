@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon1 from 'react-native-vector-icons/SimpleLineIcons';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/FontAwesome5';
-import GridView from 'react-native-super-grid';
 
 export default class SelectButton extends React.Component {
 
@@ -39,96 +38,6 @@ export default class SelectButton extends React.Component {
 
 	render() {
     	return (
-
-    		<GridView
-    			itemDimension={130}
-    			items={ [
-    					{functionStatus: selectedStatus1,
-    					status : selected1, 
-    					name:"food-apple", 
-    					style:{
-		          			fontSize: 30, 
-		          			color: opac1(!this.state.selected1),
-		          			borderWidth: 2,
-		          			borderColor: opac1(!this.state.selected1),
-		          			borderRadius: 4
-			          		} 
-			          	},
-			          	{functionStatus: selectedStatus2,
-    					status : selected2, 
-    					name:"hospital", 
-    					style:{
-		          			fontSize: 30, 
-		          			color: opac2(!this.state.selected2),
-		          			borderWidth: 2,
-		          			borderColor: opac2(!this.state.selected2),
-		          			borderRadius: 4
-			          		} 
-			          	},
-			          	{functionStatus: selectedStatus3,
-    					status : selected3, 
-    					name:"fire", 
-    					style:{
-		          			fontSize: 30, 
-		          			color: opac3(!this.state.selected3),
-		          			borderWidth: 2,
-		          			borderColor: opac3(!this.state.selected3),
-		          			borderRadius: 4
-			          		} 
-			          	},
-			          	{functionStatus: selectedStatus4,
-    					status : selected4, 
-    					name:"water", 
-    					style:{
-		          			fontSize: 30, 
-		          			color: opac4(!this.state.selected4),
-		          			borderWidth: 2,
-		          			borderColor: opac4(!this.state.selected4),
-		          			borderRadius: 4
-			          		} 
-			          	},
-			          	{functionStatus: selectedStatus5,
-    					status : selected5, 
-    					name:"earth", 
-    					style:{
-		          			fontSize: 30, 
-		          			color: opac5(!this.state.selected5),
-		          			borderWidth: 2,
-		          			borderColor: opac5(!this.state.selected5),
-		          			borderRadius: 4
-			          		} 
-			          	},
-			          	{functionStatus: selectedStatus6,
-    					status : selected6, 
-    					name:"question", 
-    					style:{
-		          			fontSize: 30, 
-		          			color: opac6(!this.state.selected6),
-		          			borderWidth: 2,
-		          			borderColor: opac6(!this.state.selected6),
-		          			borderRadius: 4
-			          		} 
-			          	}
-
-			          	]
-
-    			}
-    			renderItem={item => (
-    				<TouchableWithoutFeedback 
-			          	onPress={() => {this.{item.functionStatus}(!this.state.{item.status})}}
-			          	containerStyle={styles.containerStyle}
-			          	buttonStyle={{backgroundColor: 'white'}}
-			          	title = {"asdf"}>
-			          		<Icon name={item.name} style={item.style} />
-		          	</TouchableWithoutFeedback>
-
-
-    				)}
-
-
-
-
-/*
     		<View>
 	          <View style={styles.row}>
 	          	<View style={styles.column}>
@@ -238,7 +147,6 @@ export default class SelectButton extends React.Component {
 		      	</View>
 	          </View>
 	        </View>
-	   */
     	);
  	}
 }
