@@ -17,6 +17,11 @@ export const loginReducer = (state = {user: {}}, action) => {
                 ...state,
                 formVisible : action
             }
+        case 'SET_AUTH':
+            return {
+                ...state,
+                authVisible : action
+            }
         default:
             return state;
     }

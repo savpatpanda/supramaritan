@@ -11,18 +11,14 @@ import { connect } from 'react-redux';
 
 class FormModal extends React.Component{
 	state = {
-		formModalVisible : false,
+		formVisible : false,
 		selectedIndex : 2,
 		picture: null
 	}
-	constructor(props){
-		super(props);
-		console.log(props);
-		this.setState({formModalVisible:props.formModalVisible});
-	}
 	componentWillReceiveProps(nextProps){
-		if(nextProps.formModalVisible != this.state.formModalVisible){
-			this.setState({formModalVisible:nextProps.formModalVisible});
+		console.log(nextProps)
+		if(nextProps.formVisible && nextProps.formVisible.visible != this.state.formVisible){
+			this.setState({formVisible: nextProps.formVisible.visible});
 		}
 		if(nextProps.picture && !this.state.picture){
 			this.setState({picture:nextProps.picture});
@@ -31,10 +27,10 @@ class FormModal extends React.Component{
 	updateIndex (selectedIndex) {
 	  this.setState({selectedIndex})
 	}
- 	setFormModalVisible(visible) {
+ 	setFormVisible(visible) {
  		const {dispatch} = this.props
  		console.log("=============================")
-    	this.setState({formModalVisible: visible});
+    	this.setState({formVisible: visible});
     	dispatch({type: "SET_FORM", visible})
   	}
 
@@ -54,9 +50,9 @@ class FormModal extends React.Component{
 				<Modal
 		            animationType="slide"
 		            transparent={false}
-		            visible={this.state.formModalVisible}
+		            visible={this.state.formVisible}
 		            onRequestClose={() => {
-		              this.setFormModalVisible(!this.state.formModalVisible);
+		              this.setFormVisible(!this.state.formVisible);
 		            }}>
 		            <View>
 		              <View>
@@ -64,7 +60,7 @@ class FormModal extends React.Component{
 		                  <TouchableHighlight
 		                    style = {styles.out}
 		                    onPress={() => {
-		                      this.setFormModalVisible(!this.state.formModalVisible);
+		                      this.setFormVisible(!this.state.formVisible);
 		                    }}>
 		                    <Icon name = "close" style = {styles.closeButton}/>
 		                  </TouchableHighlight>
@@ -95,9 +91,9 @@ class FormModal extends React.Component{
 				<Modal
 	            animationType="slide"
 	            transparent={false}
-	            visible={this.state.formModalVisible}
+	            visible={this.state.formVisible}
 	            onRequestClose={() => {
-	              this.setFormModalVisible(!this.state.formModalVisible);
+	              this.setFormVisible(!this.state.formVisible);
 	            }}>
 	            <View>
 	              <View>
@@ -105,7 +101,7 @@ class FormModal extends React.Component{
 	                  <TouchableHighlight
 	                    style = {styles.out}
 	                    onPress={() => {
-	                      this.setFormModalVisible(!this.state.formModalVisible);
+	                      this.setFormVisible(!this.state.formVisible);
 	                    }}>
 	                    <Icon name = "close" style = {styles.closeButton}/>
 	                  </TouchableHighlight>
@@ -145,7 +141,8 @@ function mapStateToProps(state) {
 	console.log(state);
   return {
     ...state,
-    picture : state.loginReducer.base64
+    picture : state.loginReducer.base64,
+    formVisible : state.loginReducer.formVisible
   }
 }
 export default connect(mapStateToProps)(FormModal);

@@ -45,14 +45,12 @@ class Main extends React.Component {
       });
       this.setState({incidents: z});
     }
-    if(nextProps.formVisible && nextProps.formVisible.visible != this.state.formVisible){
-      console.log("CURRENT FORM STATE:" + nextProps.formVisible.visible)
-      this.setState({formVisible : nextProps.formVisible.visible});
-    }
   }
 
   componentDidMount(){
     const { dispatch } = this.props;
+    dispatch({type:'SET_FORM',visible:false})
+    dispatch({type:'SET_AUTH',visible:false})
     console.log('ay')
     this.watchId = navigator.geolocation.watchPosition(
       (position) => {
@@ -232,17 +230,16 @@ class Main extends React.Component {
         </MapView>
 
         <ActionButton buttonColor="rgba(231,76,60,1)">
-          <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={() => {this.setState({formModalVisible:true})}}>
+          <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={() => {this.props.dispatch({type:'SET_FORM',visible:true})}}>
             <Icon name="md-document" style={styles.actionButtonIcon} />
           </ActionButton.Item>
-          <ActionButton.Item buttonColor='#3498db' title="Notifications" onPress={() => {this.setAuthModalVisible(true)}}>
+          <ActionButton.Item buttonColor='#3498db' title="Notifications" onPress={() => {this.props.dispatch({type:'SET_AUTH',visible:true})}}>
             <Icon name="md-warning" style={styles.actionButtonIcon} />
           </ActionButton.Item>
         </ActionButton>
 
         <FormModal 
           coordinates={this.state.currentCoordinates}
-          formModalVisible={this.state.formModalVisible}
         />
 
         <AuthModal
@@ -264,7 +261,6 @@ function mapStateToProps(state) {
     ...state,
     picture : state.loginReducer.base64,
     incidents : state.loginReducer.incidents,
-    formVisible : state.loginReducer.formVisible
   }
 }
 const styles = StyleSheet.create({
