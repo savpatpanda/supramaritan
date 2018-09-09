@@ -76,9 +76,9 @@ class DistressModal extends React.Component{
 						            ]        // Bind opacity to animated value
 						        }}
 						      >
-						       <AnimateNumber style={styles.severity} countBy={1} value={this.state.incidents.severityFactor}/>
+						       <AnimateNumber style={styles.animate} countBy={1} value={this.state.incidents.severityFactor}/>
 						       <Text style={styles.severityText}> Severity Level </Text>
-						       <AnimateNumber style={styles.severity} countBy={3} value={this.state.incidents.incidents.length}/>
+						       <AnimateNumber style={styles.animateOne} countBy={3} value={this.state.incidents.incidents.length}/>
 						       <Text style={styles.severityText}> Total Incident Count </Text>
 						       <Text style={styles.severityShort}> {this.state.incidents.highest.most} </Text>
 						       <Text style={styles.severityText}> Incident Type ({this.state.incidents.highest.amount} times)</Text>
@@ -103,6 +103,16 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps)(DistressModal);
 
 const styles = StyleSheet.create({
+	animate:{
+		fontSize: 120,
+		fontWeight:'900',
+		marginLeft: '5%'
+	},
+	animateOne:{
+		fontSize: 120,
+		fontWeight:'900',
+		marginLeft: '5%'
+	},
 	severity:{
 		fontSize: 120,
 		fontWeight:'900',

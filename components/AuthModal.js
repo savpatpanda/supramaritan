@@ -19,7 +19,7 @@ class AuthModal extends React.Component{
 		var high = [];
 		var selfList = [];
 		for(var i = 0; i<list.length; i++){
-			if(list[i].user === "4b238ba168081e9b04c952ff"){
+			if(list[i].user === "3b933ba168081e9b04c952ff"){
 				selfList.push(list[i]);
 			}else{
 				if(list[i].currentPriority == 1){
